@@ -12,8 +12,10 @@
 	</bean>
 
 	<!-- 項目自定义的Realm, 所有accountService依赖的dao都需要用depends-on声明 -->
-	<bean id="shiroDbRealm" class="cn.wh.anyst.service.account.ShiroDbRealm">
+	<bean id="shiroDbRealm" class="cn.wh.anyst.service.ShiroDbRealm">
+	    <!-- 
 		<property name="accountService" ref="accountService"/>
+		-->
 	</bean>
 	
 	<!-- Shiro Filter -->
