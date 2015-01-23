@@ -1,0 +1,50 @@
+/* CSS Document */
+
+.mRadioBox {
+	display:inline-block;
+	vertical-align:middle;
+	line-height: 24px;
+}
+.mRadioBox ul {
+}
+.mRadioBox ul li {
+	float: left;
+}
+.mRadioBox ul li a {
+	text-decoration:none;
+	display: inline-block;
+	border: 1px solid #D3D3D3;
+	padding: 0px 10px;
+	margin-left: -1px;
+	color: #575765;
+	background-color: #f3f3f3;
+	background: -webkit-linear-gradient(top, #F8F8F8 0, #eeeeee 100%);
+	background: -moz-linear-gradient(top, #F8F8F8 0, #eeeeee 100%);
+	background: -o-linear-gradient(top, #F8F8F8 0, #eeeeee 100%);
+	background: linear-gradient(to bottom, #F8F8F8 0, #eeeeee 100%);
+	background-repeat: repeat-x;
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#F8F8F8, endColorstr=#eeeeee, GradientType=0);
+}
+.mRadioBox ul li a:hover {
+	background: #e2e2e2;
+	color: #000000;
+}
+.mRadioBox ul li a.first {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.mRadioBox ul li a.last {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.mRadioBox ul li.selected a {
+	color: #575765;
+	background-color: #ffffff;
+	color: #575765;
+	background: -webkit-linear-gradient(top, #F8F8F8 0, #ffffff 100%);
+	background: -moz-linear-gradient(top, #F8F8F8 0, #ffffff 100%);
+	background: -o-linear-gradient(top, #F8F8F8 0, #ffffff 100%);
+	background: linear-gradient(to bottom, #F8F8F8 0, #ffffff 100%);
+	background-repeat: repeat-x;
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#F8F8F8, endColorstr=#ffffff, GradientType=0);
+}

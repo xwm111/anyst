@@ -1,0 +1,106 @@
+<table id="grid_inc_class_list" class="easyui-datagrid"
+			data-options="
+            toolbar:'#gridTools_inc_class_list',
+            fit:true,
+            border:false,
+            singleSelect:true,
+            fitColumns: true,
+            singleSelect: true,
+            collapsible:true,
+            showFooter: true,
+            onLoadSuccess:dataGridOnloadSuccess,
+            pagination:true,
+            url:'../data/data_class_list.json',
+            method:'get'
+            ">
+  <thead>
+    <tr>
+      <th data-options="field:'ck',checkbox:true"></th>
+      <th data-options="field:'lab_01',width:120,align:'center',formatter:rowFormater_action">操作</th>
+      <th data-options="field:'lab_02',width:100,align:'left'">分类名称</th>
+      <th data-options="field:'lab_03',width:80,align:'center'">礼品数量</th>
+      <th data-options="field:'lab_04',width:160,align:'center',formatter:rowFormater_state">是否显示</th>
+      <th data-options="field:'lab_05',width:160,align:'center'">排序编号</th>
+    </tr>
+  </thead>
+</table>
+<div id="gridTools_inc_class_list" style="padding:5px;height:auto">
+  <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="add()">新增</a>
+  <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+  
+  <div class="separator"/>
+  
+  <input class="easyui-validatebox" name="" type="text" style="width:180px" placeholder="关键字">
+  
+  <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-search">搜索</a>
+</div>
+<script>
+
+function rowFormater_action(value,row,index){
+	if(!!value){
+		if(value=='&Sigma;'){
+			return "&Sigma; 统计："
+		}else{
+			var btns="<a class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\" onClick=\"edit()\">修改</a>"
+				btns+="<a class=\"easyui-linkbutton\" iconCls=\"icon-remove\" plain=\"true\" onClick=\"confirm('真的要删除码？')\">删除</a>"
+			return btns
+		}
+	}
+}
+function rowFormater_state(value,row,index){
+	if(!!value){
+		return "是"
+	}else{
+		return "否"
+	}
+}
+
+
+function add(){
+	qDialog({
+		href:'../inc/inc_class_list_add.html',
+		title:'新建',
+		iconCls:'icon-add',
+		width:540,
+		height:340,
+		buttons:[{
+			text:'保存',
+			iconCls:'icon-save',
+			handler:function(){
+					qDialog({closed:true});
+			}
+		},{
+			text:'关闭',
+			iconCls:'icon_delete',
+			handler:function(){
+					qDialog({closed:true});
+			}
+		}]
+	})
+	
+}
+
+function edit(){
+	qDialog({
+		href:'../inc/inc_class_list_add.html',
+		title:'修改',
+		iconCls:'icon-edit',
+		width:750,
+		height:466,
+		buttons:[{
+			text:'保存',
+			iconCls:'icon-save',
+			handler:function(){
+					qDialog({closed:true});
+			}
+		},{
+			text:'关闭',
+			iconCls:'icon_delete',
+			handler:function(){
+					qDialog({closed:true});
+			}
+		}]
+	})
+	
+}
+</script>
