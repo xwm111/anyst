@@ -1,0 +1,96 @@
+<table id="tg" class="easyui-treegrid" style="width:700px;height:250px" tools=""
+			data-options="
+            	toolbar:'#gridTools_inc_depar_list',
+				rownumbers: true,
+				animate: true,
+				collapsible: true,
+				fitColumns: true,
+				url: '../data/data_depar_list.json',
+            	onLoadSuccess:dataGridOnloadSuccess,
+				method: 'get',
+				idField: 'id',
+				treeField: 'name',
+                fit:true,
+                border:false
+			">
+		<thead>
+			<tr>
+     			<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'name',width:180">医院/科室名称</th>
+      			<th data-options="field:'id',width:120,align:'center',formatter:rowFormater_action">操作</th>
+			</tr>
+		</thead>
+	</table>
+<div id="gridTools_inc_depar_list" style="padding:5px;height:auto">
+  <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="add()">新增</a>
+  <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+  
+  <div class="separator"/>
+  
+  <input class="easyui-validatebox" name="" type="text" style="width:180px" placeholder="关键字">
+  
+  <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-search">搜索</a>
+</div>
+<script>
+
+function rowFormater_action(value,row,index){
+	if(!!row._parentId){
+		var btns="<a class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\" onClick=\"edit()\">修改</a>"
+			btns+="<a class=\"easyui-linkbutton\" iconCls=\"icon-remove\" plain=\"true\" onClick=\"confirm('真的要删除码？')\">删除</a>"
+	}else{
+		var btns="<a class=\"easyui-linkbutton\" iconCls=\"icon-add\" plain=\"true\" onClick=\"add()\">新增科室</a>"
+			btns+="<a class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\" onClick=\"edit()\">修改</a>"
+			btns+="<a class=\"easyui-linkbutton\" iconCls=\"icon-remove\" plain=\"true\" onClick=\"confirm('真的要删除码？')\">删除</a>"
+	}
+	return btns
+}
+
+
+function add(){
+	qDialog({
+		href:'../inc/inc_depar_list_add.html',
+		title:'新建',
+		iconCls:'icon-add',
+		width:540,
+		height:340,
+		buttons:[{
+			text:'保存',
+			iconCls:'icon-save',
+			handler:function(){
+					qDialog({closed:true});
+			}
+		},{
+			text:'关闭',
+			iconCls:'icon_delete',
+			handler:function(){
+					qDialog({closed:true});
+			}
+		}]
+	})
+	
+}
+
+function edit(){
+	qDialog({
+		href:'../inc/inc_depar_list_add.html',
+		title:'修改',
+		iconCls:'icon-edit',
+		width:750,
+		height:466,
+		buttons:[{
+			text:'保存',
+			iconCls:'icon-save',
+			handler:function(){
+					qDialog({closed:true});
+			}
+		},{
+			text:'关闭',
+			iconCls:'icon_delete',
+			handler:function(){
+					qDialog({closed:true});
+			}
+		}]
+	})
+	
+}
+</script>

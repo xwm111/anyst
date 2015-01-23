@@ -1,0 +1,192 @@
+/* CSS Document */
+
+/******************************************************************************************/
+.posView{
+	position:relative;
+	width:408px;
+	height:420px;
+}
+.posView .pos{
+	position:absolute;
+	top:0px;
+	left:0px;
+	background-image:url(../images/scanPosImg.png);
+	width:408px;
+	height:420px;
+	z-index:5;
+}
+.posView .card{
+	position:absolute;
+	top:20px;
+	left:140px;
+	width:207px;
+	height:133px;
+	background-image:url(../images/scanCardImg.png);
+	z-index:4;
+}
+.posView .note{
+	position:absolute;
+	left:22px;
+	top:262px;
+	width:376px;
+	z-index:7;
+	line-height:1.8em;
+	text-align:left;
+	color:#000;
+}
+.posView .note p{
+	margin:0px;
+	padding:0px;
+	font-size:12px;
+}
+.posView .title{
+	position:absolute;
+	top:0px;
+	left:0px;
+	color:#000;
+	font-size:16pxpx;
+	z-index:9;
+}
+/******************************************************************************************/
+.stepBox{
+	padding:20px 60px 50px 60px;
+}
+.stepBox ul{
+	position:relative;
+	height:6px;
+	background-image:url(../images/stepBoxBg.png);
+}
+.stepBox ul .okLine{
+	position:absolute;
+	height:6px;
+	background-color:#91c269;
+	z-index:2;
+}
+.stepBox ul .doLine{
+	position:absolute;
+	height:6px;
+	background-color:#ff7618;
+	z-index:1;
+}
+.stepBox ul li{
+	position:absolute;
+	width:120px;
+	text-align:center;
+	margin-left:-60px;
+	z-index:3;
+}
+.stepBox ul li a{
+	position:relative;
+	display:block;
+	padding-top:30px;
+	cursor:pointer;
+}
+.stepBox ul li a:hover{
+	opacity:.7;
+	-moz-opacity:.7;
+	-webkit-opacity:.7;
+}
+.stepBox ul li a .tips{
+	position:absolute;
+	line-height:16px;
+	min-width:16px;
+	border-radius:16px;
+	/*background-color:rgba(153,0,0,.8);*/
+	background-color:rgba(0,102,0,.9);
+	font-size:12px;
+	padding:2px;
+	color:#FFF;
+	top:-20px;
+	left:50%;
+	z-index:1;
+	box-shadow:1px 1px 1px rgba(0,0,0,.5);
+	margin-left:2px;
+}
+.stepBox ul li a .state{
+	position:absolute;
+	top:0px;
+	left:50%;
+	width:16px;
+	height:16px;
+	margin-left:-8px;
+	margin-top:-5px;
+	box-shadow: 0px 0px 2px #FFFFFF;
+	border-radius:15px;
+	background-color:#fc9;
+}
+.stepBox ul li a .step{
+	display:none;
+	position:absolute;
+	width:30px;
+	height:30px;
+	top:0px;
+	left:50%;
+	margin-left:-15px;
+	margin-top:-12px;
+	border-radius:30px;
+	line-height:30px;
+	font-family:Arial;
+	font-size:20px;
+	color:#FFF;
+}
+.stepBox ul li a .stepCont{
+	display:block;
+	font-family:"微软雅黑";
+	font-size:16px;
+	color:#999;
+}
+.stepBox ul li .ok .state{
+	position:absolute;
+	width:30px;
+	height:30px;
+	top:0px;
+	left:50%;
+	margin-left:-15px;
+	margin-top:-12px;
+	background-color:#91c269;
+	border-radius:30px;
+	box-shadow: 0px 0px 2px #FFFFFF;
+	line-height:30px;
+	font-family:Arial;
+	font-size:20px;
+	color:#FFF;
+	background-image:url(../images/icon_ok.png);
+	background-position:center center;
+	background-repeat:no-repeat;
+}
+.stepBox ul li .ok .stepCont{
+	color:#333333;
+}
+.stepBox ul li .do .state{
+	position:absolute;
+	width:30px;
+	height:30px;
+	top:0px;
+	left:50%;
+	margin-left:-15px;
+	margin-top:-12px;
+	background-color:#ff7618;
+	border-radius:30px;
+	box-shadow: 0px 0px 2px #FFFFFF;
+	line-height:30px;
+	font-family:Arial;
+	font-size:20px;
+	color:#FFF;
+}
+.stepBox ul li .do .step{
+	display:inherit;
+}
+.stepBox ul li .do .stepCont{
+	color:#333333;
+}
+
+/******************************/
+.stepBox ul li.selected{}
+.stepBox ul li.selected a:hover{
+	opacity:1;
+	-moz-opacity:1;
+	-webkit-opacity:1;
+}
+.stepBox ul li.selected a .stepCont{
+	color:#ff7618;
+}

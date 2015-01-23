@@ -1,0 +1,11 @@
+﻿{"total":7,"rows":[
+	{"id":1,				"name":"中南医院"	,	"iconCls":"icon-ok","progress":60,"state":"closed"},
+	{"id":2,"_parentId":1,	"name":"皮肤科",		"iconCls":"icon-ok","progress":100},
+	{"id":3,"_parentId":1,	"name":"消化科",		"iconCls":"icon-ok","persons":2,"progress":100},
+	{"id":4,				"name":"省人民医院",	"iconCls":"icon-ok","persons":1,"progress":100},
+	{"id":5,"_parentId":4,	"name":"内科",		"iconCls":"icon-ok","persons":1,"progress":100},
+	{"id":6,"_parentId":4,	"name":"呼吸科",		"iconCls":"icon-ok","persons":2,"progress":80},
+	{"id":7,"_parentId":4,	"name":"妇科",		"iconCls":"icon-ok","persons":1,"progress":20}
+],"footer":[
+	{"name":"Total Persons:","persons":7,"iconCls":"icon-sum"}
+]}

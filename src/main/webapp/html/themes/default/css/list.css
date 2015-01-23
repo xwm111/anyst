@@ -1,0 +1,97 @@
+/* CSS Document */
+.listHandle{
+	padding:10px;
+	text-align:center;
+	background-color:#f5f5f5;
+}
+.separator{
+	display:inline-block; width:1px; background-color:#dbdbdb; height:24px; vertical-align:middle; margin:-2px 5px;
+}
+.groupList-product{
+	background-color:#f1f1f1;
+	color:#333;
+}
+.groupList-product caption{
+	padding:4px;
+	background-color:#f1f1f1;
+	overflow:hidden;
+	font-size:14px;
+	height:24px;
+	line-height:24px;
+	border-bottom:1px solid #CCC;
+}
+.groupList-product caption .titles{
+	float:left;
+	font-size:14px;
+	font-weight:bold;
+	padding-left:32px;
+}
+.groupList-product caption .btns{
+	float:right;
+	padding-right:10px;
+}
+.groupList-product .lab{
+	font-size:12px;
+	color:#999;
+}
+.groupList-product ul{
+	background-color#f1f1f1;
+}
+.groupList-product ul li{
+	display:block;
+	border:1px solid #CCC;
+	margin:-1px;
+	background-color:#FFF;
+}
+.groupList-product ul li table{
+	line-height:24px;
+	font-size:12px;
+}
+.groupList-product ul li table td{
+	padding:5px;
+}
+.groupList-product ul li p{
+	margin:0px;
+	padding:0px;
+}
+.groupList-product ul li .imgBox{
+	width:108px;
+	height:108px;
+}
+
+/****************************************************************/
+.sBtnList{}
+.sBtnList ul{}
+.sBtnList ul li{
+	border:1px solid #ccc;
+	display:inline-block;
+	margin:2px;
+	width:inherit;
+}
+.sBtnList ul li a.l-btn{
+	border-radius:0px;
+	margin:-1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,160 @@
+.icon-blank{
+	background:url('../images/icons/blank.gif') no-repeat center center;
+}
+.icon-add{
+	background:url('../images/icons/edit_add.png') no-repeat center center;
+}
+.icon-edit{
+	background:url('../images/icons/pencil.png') no-repeat center center;
+}
+.icon-remove{
+	background:url('../images/icons/edit_remove.png') no-repeat center center;
+}
+.icon-save{
+	background:url('../images/icons/filesave.png') no-repeat center center;
+}
+.icon-cut{
+	background:url('../images/icons/cut.png') no-repeat center center;
+}
+.icon-ok{
+	background:url('../images/icons/ok.png') no-repeat center center;
+}
+.icon-no{
+	background:url('../images/icons/no.png') no-repeat center center;
+}
+.icon-cancel{
+	background:url('../images/icons/cancel.png') no-repeat center center;
+}
+.icon-reload{
+	background:url('../images/icons/reload.png') no-repeat center center;
+}
+.icon-search{
+	background:url('../images/icons/search.png') no-repeat center center;
+}
+.icon-print{
+	background:url('../images/icons/print.png') no-repeat center center;
+}
+.icon-help{
+	background:url('../images/icons/help.png') no-repeat center center;
+}
+.icon-undo{
+	background:url('../images/icons/undo.png') no-repeat center center;
+}
+.icon-redo{
+	background:url('../images/icons/redo.png') no-repeat center center;
+}
+.icon-sum{
+	background:url('../images/icons/sum.png') no-repeat center center;
+}
+.icon-tip{
+	background:url('../images/icons/tip.png') no-repeat center center;
+}
+.icon-filter{
+	background:url('../images/icons/filter.png') no-repeat center center;
+}
+
+
+.icon-mini-add{
+	background:url('../images/icons/mini_add.png') no-repeat center center;
+}
+.icon-mini-edit{
+	background:url('../images/icons/mini_edit.png') no-repeat center center;
+}
+.icon-mini-refresh{
+	background:url('../images/icons/mini_refresh.png') no-repeat center center;
+}
+
+/*********************************************************************************************/
+.icon-del{
+	background:url('../images/icons/icon_del.png') no-repeat center center;
+}
+.icon-msg{
+	background:url('../images/icons/icon_msg.png') no-repeat center center;
+}
+.icon-msg-isRead{
+	background:url('../images/icons/icon_msg_isRead.png') no-repeat center center;
+}
+.icon-sort{
+	background:url('../images/icons/icon_sort.png') no-repeat center center;
+}
+.icon-ref{
+	background:url('../images/icons/icon_Refresh.png') no-repeat center center;
+}
+.icon-addProd{
+	background:url('../images/icons/icon_btn_jrgwc.png') no-repeat center center;
+}
+.icon-delProd{
+	background:url('../images/icons/icon_btn_ycgwc.png') no-repeat center center;
+}
+.icon-buyCar{
+	background:url('../images/icons/icon_btn_gwc.png') no-repeat center center;
+}
+.icon-back{
+	background:url('../images/icons/icon_back.png') no-repeat center center;
+}
+.icon-details{
+	background:url('../images/icons/icon_btn_spxq.png') no-repeat center center;
+}
+.icon-payer{
+	background:url('../images/icons/icon_payer.png') no-repeat center center;
+}
+.icon-sign{
+	background:url('../images/icons/blog-pencil.png') no-repeat center center;
+}
+
+
+/***************************************************************************************************************************/
+/*icon leftBar*/
+.icon-leftTab{
+	background:url(../images/icons/icon_leftBar.png) no-repeat;
+}
+.icon-leftTab.i-01{
+	background-position:0px 0px;
+}
+.icon-leftTab.i-02{
+	background-position:-24px 0px;
+}
+.icon-leftTab.i-03{
+	background-position:-48px 0px;
+}
+.icon-leftTab.i-04{
+	background-position:-72px 0px;
+}
+.icon-leftTab.i-05{
+	background-position:-96px 0px;
+}
+.icon-leftTab.i-06{
+	background-position:-120px 0px;
+}
+.icon-leftTab.i-07{
+	background-position:-144px 0px;
+}
+.icon-leftTab.i-08{
+	background-position:-168px 0px;
+}
+.icon-leftTab.i-09{
+	background-position:-192px 0px;
+}
+.icon-leftTab.i-10{
+	background-position:-216px 0px;
+}
+.icon-leftTab.i-11{
+	background-position:-240px 0px;
+}
+.icon-leftTab.i-12{
+	background-position:-264px 0px;
+}
+.icon-leftTab.i-13{
+	background-position:-288px 0px;
+}
+.icon-leftTab.i-14{
+	background-position:-312px 0px;
+}
+.icon-leftTab.i-15{
+	background-position:-336px 0px;
+}
+.icon-leftTab.i-16{
+	background-position:-360px 0px;
+}
+
+
