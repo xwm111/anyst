@@ -1,0 +1,57 @@
+﻿<table id="grid_inc_equipment_list" class="easyui-datagrid"
+			data-options="
+            toolbar:'#gridTools_inc_sett_list',
+            fit:true,
+            border:false,
+            singleSelect:true,
+            fitColumns: false,
+            onLoadSuccess:dataGridOnloadSuccess,
+            pagination:true,
+            url:'../data/data_sett_list.json',
+            method:'get'
+            ">
+  <thead>
+    <tr>
+      <th data-options="field:'ck',checkbox:true"></th>
+      <th data-options="field:'lab_00',width:100,align:'center'">编号</th>
+      <th data-options="field:'lab_01',width:120,align:'center',formatter:rowFormater_action">操作</th>
+      <th data-options="field:'lab_02',width:120,align:'center'">客户姓名</th>
+      <th data-options="field:'lab_03',width:180,align:'left'">医院名称</th>
+      <th data-options="field:'lab_04',width:80,align:'center'">所属科室</th>
+      <th data-options="field:'lab_05',width:120,align:'center'">电话</th>
+      <th data-options="field:'lab_06',width:80,align:'center'">身份</th>
+      <th data-options="field:'lab_07',width:80,align:'center'">关联代表</th>
+      <th data-options="field:'lab_08',width:100,align:'center'">礼品编号</th>
+      <th data-options="field:'lab_09',width:140,align:'left'">礼品名称</th>
+      <th data-options="field:'lab_10',width:60,align:'center'">礼品数量</th>
+      <th data-options="field:'lab_11',width:120,align:'rihgt'">礼成本价</th>
+      <th data-options="field:'lab_12',width:120,align:'right'">成本小计</th>
+      <th data-options="field:'lab_13',width:160,align:'center'">订单完成时间</th>
+    </tr>
+  </thead>
+</table>
+<div id="gridTools_inc_sett_list" style="padding:5px;height:auto">
+  <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">导出Excel</a>
+  
+  <div class="separator"/>
+  
+  经销商名称：
+  <input class="easyui-validatebox" name="" type="text" style="width:80px">
+  时间：
+  <input class="easyui-validatebox" name="" type="text" style="width:80px">
+  至
+  <input class="easyui-validatebox" name="" type="text" style="width:80px">
+  <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-search">搜索</a>
+</div>
+<script>
+
+function rowFormater_action(value,row,index){
+	if(!!value){
+		var btns="<a class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\">导出</a>"
+		return btns
+	}else{
+		return ""
+	}
+}
+
+</script>

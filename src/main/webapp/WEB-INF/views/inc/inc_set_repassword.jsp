@@ -1,0 +1,36 @@
+﻿<div class="easyui-layout" data-options="fit:true">
+  <div data-options="region:'center',border:false">
+    <div class="form">
+      <table border="0" cellpadding="0" cellspacing="4" class="content">
+        <tr>
+          <th width="80">旧的密码：</th>
+          <td><input class="easyui-validatebox" name="input2" type="text" size="20" /></td>
+        </tr>
+        <tr>
+          <th width="80"><span class="name">
+              新的密码：
+            </span></th>
+          <td><input class="easyui-validatebox" name="input" type="password" size="21"/></td>
+        </tr>
+        <tr>
+          <th width="80"><span class="name">
+              确认密码：
+            </span></th>
+          <td><input class="easyui-validatebox" name="input3" type="password" size="21"/></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div data-options="region:'south',border:false" style="overflow:hidden;padding:0px 10px;">
+    <div class="form">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+          <tr>
+            <td height="60" align="right" valign="middle"><a class="a-btn-r-big"  href="#">重置</a>
+              <a class="a-btn-r-big"  href="#">保存</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
