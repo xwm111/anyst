@@ -9,11 +9,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "anyst_taps")
 public class Tap extends IdEntity {
-	private String code;	//贴花编号
-	private String name;	//贴花名称
-	private Long product;	//贴花对应产品ID
-	private String imgUrl;	//贴花图片地址
-	private int status;		//贴画状态 (0 - 启用, 1 - 停用)
+	private String code;		//贴花编号
+	private String name;		//贴花名称
+	private Long product;		//贴花对应产品ID
+	private String imgUrl;		//贴花图片地址
+	private int status;			//贴画状态 (0 - 启用, 1 - 停用)
+	private String description; //贴花说明
 	
 	public String getName() {
 		return name;
@@ -44,5 +45,15 @@ public class Tap extends IdEntity {
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	@Override
+	public String getOpt() {
+		return this.code;
 	}
 }

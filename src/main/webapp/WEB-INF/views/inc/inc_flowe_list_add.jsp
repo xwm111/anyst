@@ -13,14 +13,31 @@
       </table>
     </div>
   </div>-->
+  
+  <form id="createTapForm" method="post">
   <div data-options="region:'center',border:false">
     <div class="easyui-tabs" fit="true" border="false">
+   	  <c:choose>
+   	    <c:when test="${empty tapBean}">
       <div title="基本信息" href="${ctx}/inc/basi/inc_flowe_list_add_infos"></div>
+        </c:when>
+        <c:otherwise>
+      <div title="基本信息" href="${ctx}/inc/basi/inc_flowe_list_edit_infos?tapCode=${tapBean.code}&tapName=${tapBean.name}&tapStatus=${tapBean.status}&tapDescription=${tapBean.description}"></div>
+        </c:otherwise>
+      </c:choose>
     </div>
   </div>
   <div data-options="region:'east',border:false" style="width:320px;">
     <div class="easyui-tabs" fit="true" border="false" style="border-left:1px solid #ddd;">
+       <c:choose>
+   	    <c:when test="${empty tapBean}">
       <div title="贴花图片" href="${ctx}/inc/basi/inc_flowe_list_add_imgs"></div>
+        </c:when>
+        <c:otherwise>
+      <div title="贴花图片" href="${ctx}/inc/basi/inc_flowe_list_edit_imgs"></div>
+        </c:otherwise>
+      </c:choose>
     </div>
   </div>
+  </form>
 </div>

@@ -10,16 +10,16 @@
             collapsible:true,
             onLoadSuccess:dataGridOnloadSuccess,
             pagination:true,
-            url:'../data/data_flowe_list.json',method:'get'
+            url:'${ctx}/api/v1/tap',method:'get'
             ">
   <thead>
     <tr>
       <th data-options="field:'ck',checkbox:true"></th>
-      <th data-options="field:'lab_00',width:100,align:'center'">贴花ID</th>
-      <th data-options="field:'lab_01',width:160,align:'center',formatter:rowFormater_action">操作</th>
-      <th data-options="field:'lab_02',width:160">贴花名称</th>
-      <th data-options="field:'lab_03',width:80,align:'center',formatter:rowFormater_state">状态</th>
-      <th data-options="field:'lab_04',width:100,align:'center',formatter:rowFormater_pic">产品贴花图片</th>
+      <th data-options="field:'code',width:100,align:'center'">贴花ID</th>
+      <th data-options="field:'opt',width:160,align:'center',formatter:rowFormater_action">操作</th>
+      <th data-options="field:'name',width:160">贴花名称</th>
+      <th data-options="field:'status',width:80,align:'center',formatter:rowFormater_state">状态</th>
+      <th data-options="field:'imgUrl',width:100,align:'center',formatter:rowFormater_pic">产品贴花图片</th>
     </tr>
   </thead>
 </table>
@@ -30,16 +30,16 @@
   <div class="separator"/>
   
   名称：
-  <input class="easyui-validatebox" name="" type="text" style="width:80px">
+  <input class="easyui-validatebox" name="searchTapName" id="searchTapName" type="text" style="width:80px">
   编号：
-  <input class="easyui-validatebox" name="" type="text" style="width:80px">
-  分类：
-  <select class="easyui-combobox" panelHeight="auto" style="width:100px">
-    <option value="">所有</option>
-    <option value="">已绑定</option>
-    <option value="">未绑定</option>
+  <input class="easyui-validatebox" name="searchTapCode" id="searchTapCode" type="text" style="width:80px">
+  状态：
+  <select class="easyui-combobox" name="searchTapStatus" id="searchTapStatus" panelHeight="auto" style="width:100px">
+    <option value="-1">所有</option>
+    <option value="1">使用</option>
+    <option value="0">未使用</option>
   </select>
-  <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-search">搜索</a>
+  <a href="#" class="easyui-linkbutton" plain="true" onClick="searchFlowe()" iconCls="icon-search">搜索</a>
 </div>
 <script>
 function rowFormater_pic(value,row,index){
@@ -54,8 +54,8 @@ function rowFormater_pic(value,row,index){
 
 function rowFormater_action(value,row,index){
 	if(!!value){
-		var btns="<a class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\" onClick=\"editFlowe()\">修改</a>"
-			btns+="<a class=\"easyui-linkbutton\" iconCls=\"icon-remove\" plain=\"true\" onClick=\"confirm('真的要删除码？')\">删除</a>"
+		var btns="<a class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\" onClick=\"editFlowe('" + value + "')\">修改</a>"
+			btns+="<a class=\"easyui-linkbutton\" iconCls=\"icon-remove\" plain=\"true\" onClick=\"delFlowe('" + value + "')\">删除</a>"
 		return btns
 	}else{
 		return ""
@@ -83,7 +83,16 @@ function addFlowe(){
 			text:'保存',
 			iconCls:'icon-save',
 			handler:function(){
-					qDialog({closed:true});
+				$('#createTapForm').form('submit', {
+					url: '${ctx}/api/v1/tap/create',
+					onSubmit: function() {
+						return true;
+					},
+					success:function(data) {
+						alert("成功");
+					}
+				});
+				qDialog({closed:true});
 			}
 		},{
 			text:'关闭',
@@ -96,9 +105,9 @@ function addFlowe(){
 	
 }
 
-function editFlowe(){
+function editFlowe(id){
 	qDialog({
-		href:'${ctx}/inc/basi/inc_flowe_list_edit',
+		href:'${ctx}/inc/basi/inc_flowe_list_edit?tapCode=' + id,
 		title:'修改',
 		iconCls:'icon-edit',
 		width:750,
@@ -107,7 +116,16 @@ function editFlowe(){
 			text:'保存',
 			iconCls:'icon-save',
 			handler:function(){
-					qDialog({closed:true});
+				$('#createTapForm').form('submit', {
+					url: '${ctx}/api/v1/tap/update',
+					onSubmit: function() {
+						return true;
+					},
+					success:function(data) {
+						alert("成功");
+					}
+				});
+				qDialog({closed:true});
 			}
 		},{
 			text:'关闭',
@@ -118,5 +136,38 @@ function editFlowe(){
 		}]
 	})
 	
+}
+
+function delFlowe(id) {
+	if(confirm('真的要删除码？')) {
+		$.ajax({
+			url : '${ctx}/api/v1/tap/delete',
+	        data:{'tapCode':id},
+	        cache : false,
+	        async : false,
+	        type : "POST",
+	        dataType : 'json',
+	        success : function (data){
+        	   	alert("删除成功");
+	        },
+	        error: function(data) {
+	        	alert("删除失败: " + data);
+	        }
+		});
+	}
+}
+
+function searchFlowe() {
+	var searchTapName = $('#searchTapName').val();
+	var searchTapCode = $('#searchTapCode').val();
+	var searchTapStatus=$("#searchTapStatus").combobox('getValue');
+	alert(searchTapStatus);
+	$('#grid_inc_flowe_list').datagrid(
+			'load', 
+			{
+				'tapName' : searchTapName,
+				'tapCode' : searchTapCode,
+				'tapStatus' : searchTapStatus
+			});
 }
 </script>

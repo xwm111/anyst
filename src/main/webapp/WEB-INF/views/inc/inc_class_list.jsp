@@ -33,7 +33,7 @@
   
   <div class="separator"/>
   
-  <input class="easyui-validatebox" name="giftGroupName" id="giftGroupName" type="text" style="width:180px" placeholder="关键字">
+  <input class="easyui-validatebox" name="giftClassName" id="giftClassName" type="text" style="width:180px" placeholder="关键字">
   
   <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-search" onClick="searchClass()">搜索</a>
 </div>
@@ -149,7 +149,7 @@ function delClass(id) {
 }
 
 function searchClass() {
-	var giftGroupName = $('#giftGroupName').val();
+	var giftGroupName = $('#giftClassName').val();
 	$('#grid_inc_class_list').datagrid(
 			'load', 
 			{

@@ -14,6 +14,7 @@ import cn.wh.anyst.entity.CustomerGroup;
 import cn.wh.anyst.entity.Department;
 import cn.wh.anyst.entity.GiftGroup;
 import cn.wh.anyst.entity.Hospital;
+import cn.wh.anyst.entity.Tap;
 import cn.wh.anyst.service.BasicService;
 
 /*
@@ -103,6 +104,11 @@ public class BasicIncController {
 		return "inc/inc_class_list_add";
 	}
 	
+	@RequestMapping("/inc_class_list_add_infos")
+	public String basiClassListAddInfos() {
+		return "inc/inc_class_list_add_infos";
+	}
+	
 	@RequestMapping("/inc_class_list_edit_infos")
 	public String basiClassListEditInfos(
 			@RequestParam(value = "giftGroupId") Long id,						//礼品分类ID
@@ -175,12 +181,40 @@ public class BasicIncController {
 	}
 	
 	@RequestMapping("/inc_flowe_list_edit")
-	public String basiFloweListEdit() {
+	public String basiFloweListEdit(
+			@RequestParam(value = "tapCode") String code,						//贴花Code
+			Model model,
+			ServletRequest request) {
+		Tap tap = basicService.queryTapByCode(code);
+		if (tap != null) {
+			model.addAttribute("tapBean", tap);
+		}
+			
 		return "inc/inc_flowe_list_add";
 	}
 	
 	@RequestMapping("/inc_flowe_list_add_infos")
 	public String basiFloweListAddInfos() {
+		return "inc/inc_flowe_list_add_infos";
+	}
+	
+	@RequestMapping("/inc_flowe_list_edit_infos")
+	public String basiFloweListEditInfos(
+			@RequestParam(value = "tapCode") String code,						//贴花Code
+			@RequestParam(value = "tapName") String name,						//贴花名称
+			@RequestParam(value = "tapStatus") int status,						//贴花状态
+			@RequestParam(value = "tapDescription") String description,			//贴花说明
+			Model model,
+			ServletRequest request) throws UnsupportedEncodingException {
+		Tap tap = new Tap();
+		tap.setCode(code);
+		tap.setName(new String(name.getBytes("ISO-8859-1")));
+		tap.setStatus(status);
+		tap.setDescription(new String(description.getBytes("ISO-8859-1")));
+		if (tap != null) {
+			model.addAttribute("tapBean", tap);
+		}
+			
 		return "inc/inc_flowe_list_add_infos";
 	}
 	

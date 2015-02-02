@@ -327,6 +327,13 @@ public class BasicService {
 	}
 	
 	/*
+	 * 根据贴花Code查找贴花信息
+	 */
+	public Tap queryTapByCode(String code) {
+		return tapDao.findByCode(code);
+	}
+	
+	/*
 	 * 创建贴花信息
 	 */
 	public void createTap(Tap tap) {
