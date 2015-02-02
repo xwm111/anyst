@@ -24,6 +24,9 @@ import org.springside.modules.utils.Encodes;
 
 import com.google.common.base.Objects;
 
+/*
+ * Shiro权限管理服务
+ */
 public class ShiroDbRealm extends AuthorizingRealm {
 
 	//protected AccountService accountService;

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 
 /**
  * 统一定义id的entity基类.
@@ -23,6 +24,7 @@ import javax.persistence.MappedSuperclass;
 public abstract class IdEntity {
 
 	protected Long id;
+	protected String opt = "optFill";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,5 +34,14 @@ public abstract class IdEntity {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	@Transient
+	public String getOpt() {
+		return String.valueOf(id);
+	}
+
+	public void setOpt(String opt) {
+		this.opt = opt;
 	}
 }

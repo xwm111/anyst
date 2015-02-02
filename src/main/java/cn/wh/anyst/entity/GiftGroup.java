@@ -12,8 +12,8 @@ public class GiftGroup extends IdEntity {
 	private String name;		//分组名称
 	private int num;			//分组当前礼品数
 	private String description;	//分组备注
-	private int displayOrder;			//排序序号
-	private int isDisplay;		//是否显示
+	private int displayOrder;	//排序序号
+	private int isDisplay;		//是否显示 (1 - 显示, 0 - 不显示)
 	public String getName() {
 		return name;
 	}

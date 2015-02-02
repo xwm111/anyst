@@ -12,6 +12,7 @@ public class Department extends IdEntity {
 	private String departmentName;		//科室名称
 	private String departmentCode;		//科室编码
 	private String hospitalCode;		//医院编码
+	private Long hospitalId;			//医院ID
 	
 	public String getDepartmentName() {
 		return departmentName;
@@ -30,5 +31,11 @@ public class Department extends IdEntity {
 	}
 	public void setHospitalCode(String hospitalCode) {
 		this.hospitalCode = hospitalCode;
+	}
+	public Long getHospitalId() {
+		return hospitalId;
+	}
+	public void setHospitalId(Long hospitalId) {
+		this.hospitalId = hospitalId;
 	}
 }

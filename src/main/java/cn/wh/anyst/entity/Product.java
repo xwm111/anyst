@@ -1,5 +1,6 @@
 package cn.wh.anyst.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -15,6 +16,9 @@ public class Product extends IdEntity {
 	private String description;			//产品描述
 	private String productImgUrls;		//产品图片链接
 	private String tapImgUrls;			//产品贴画图片链接
+	private int status;					//产品状态（0 － 未绑定贴花，1 － 已经绑定贴花）
+	
+	@Column(nullable=false)
 	public String getName() {
 		return name;
 	}
@@ -50,5 +54,15 @@ public class Product extends IdEntity {
 	}
 	public void setTapImgUrls(String tapImgUrls) {
 		this.tapImgUrls = tapImgUrls;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	@Override
+	public String getOpt() {
+		return this.code;
 	}
 }

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class CustomerGroup extends IdEntity {
 	private String name;		//分组名称
 	private int num;			//分组当前客户数
-	private int description;		//分组备注
+	private String description;	//分组备注
 	public String getName() {
 		return name;
 	}
@@ -24,10 +24,10 @@ public class CustomerGroup extends IdEntity {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public int getDescription() {
+	public String getDescription() {
 		return description;
 	}
-	public void setDescription(int description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 }

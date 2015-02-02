@@ -23,6 +23,7 @@
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/login" />
 		<property name="successUrl" value="/" />
+		<!--
 		<property name="filterChainDefinitions">
 			<value>
 				/login = authc
@@ -34,6 +35,7 @@
 				/** = user
 			</value>
 		</property>
+		-->
 	</bean>
 	
 	<!-- 用户授权信息Cache, 采用EhCache -->
