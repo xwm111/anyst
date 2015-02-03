@@ -1,4 +1,5 @@
 ﻿<div class="form">
+  <!-- 
   <table border="0" cellpadding="0" cellspacing="4" class="content">
     <tr>
       <th width="100" align="right">商品条码：</th>
@@ -9,6 +10,7 @@
       <td>扫描条码，自动从商品库中查询商品属性，未编辑过的商品手动编辑商品属性信息</td>
     </tr>
   </table>
+   -->
   <div class="nullLine" style="height:4px;"></div>
   <table border="0" cellpadding="0" cellspacing="4" class="content">
     <tr>
