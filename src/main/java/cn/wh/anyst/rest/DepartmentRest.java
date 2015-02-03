@@ -1,5 +1,7 @@
 package cn.wh.anyst.rest;
 
+import java.util.List;
+
 import javax.servlet.ServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,21 @@ public class DepartmentRest {
             ServletRequest request) {
 		System.out.println("list hospital");
 		return basicService.listHospital();
+	}
+	
+	//列出所有医院的信息
+	@RequestMapping(value="/listAllHospital", method = RequestMethod.GET)
+	public List<Hospital> listAllHospital(
+			ServletRequest request) {
+		return basicService.listAllHospital();
+	}
+	
+	//根据医院ID列出所有部门的信息
+	@RequestMapping(value="/listAllDepartment", method = RequestMethod.GET)
+	public List<Hospital> listAllDepartment(
+			@RequestParam(value = "hospitalId") Long hospitalId,						//医院ID
+			ServletRequest request) {
+		return basicService.listAllHospital();
 	}
 	
 	//新增医院

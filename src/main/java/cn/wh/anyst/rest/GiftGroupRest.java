@@ -1,6 +1,9 @@
 package cn.wh.anyst.rest;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.ServletRequest;
 
@@ -25,7 +28,7 @@ public class GiftGroupRest {
 	@Autowired
 	private BasicService basicService;
 
-	// 列出所有客户分组并分页
+	// 列出所有礼品分类并分页
 	@RequestMapping(method = RequestMethod.GET)
 	public RestQueryResultModal<GiftGroup> list(
 			@RequestParam(value = "giftGroupName", defaultValue = "") String giftGroupName, 		// 查询的礼品分类名字
@@ -41,6 +44,24 @@ public class GiftGroupRest {
 		return result;
 	}
 
+	//列出所有礼品的分类
+	@RequestMapping(value = "/listAllGiftGroup", method = RequestMethod.GET)
+	public List<GiftGroup> listAllGiftGroup() {
+		return basicService.listAllGiftGroup();
+	}
+	
+	//列出所有礼品的分类并添加所有分类选项
+	@RequestMapping(value = "/listAllGiftGroupIncludeAll", method = RequestMethod.GET)
+	public List<GiftGroup> listAllGiftGroupIncludeAll() {
+		ArrayList<GiftGroup> result = new ArrayList<GiftGroup>();
+		result.addAll(basicService.listAllGiftGroup());
+		GiftGroup allGroup = new GiftGroup();
+		allGroup.setId(-1L);
+		allGroup.setName("所有");
+		result.add(0, allGroup);
+		return Collections.unmodifiableList(result);
+	}
+	
 	// 通过ID查询组信息
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public GiftGroup list(@PathVariable("id") Long id)
@@ -48,7 +69,7 @@ public class GiftGroupRest {
 		return basicService.queryGiftGroupById(id);
 	}
 
-	// 创建客户分组
+	// 创建礼品分类
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public int create(
 			@RequestParam(value = "giftGroupName") String name, 										// 分组名称
@@ -65,7 +86,7 @@ public class GiftGroupRest {
 		return 1;
 	}
 
-	// 更新客户分组
+	// 更新礼品分类分组
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public int update(
 			@RequestParam(value = "giftGroupId") Long id,												// 分租ID
@@ -86,7 +107,7 @@ public class GiftGroupRest {
 		return 0;
 	}
 
-	// 删除客户分组
+	// 删除礼品分类
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public int delete(@RequestParam(value = "giftGroupId") Long id, // 分组ID
 			ServletRequest request) {

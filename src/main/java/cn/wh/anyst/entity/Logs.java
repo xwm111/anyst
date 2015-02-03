@@ -12,8 +12,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "anyst_logs")
 public class Logs extends IdEntity {
-	private int type;			//日志类型
+	private int type;			//日志类型(1 - 产品日志，2 - 礼品日志，3 － 订单日志，4 － 库存日志，5 － 登录日志)
 	private String content;		//日志内容
+	private String account;		//操作人账号
+	private String role;		//操作人角色
 	private Date date;			//日志时间
 	public int getType() {
 		return type;
@@ -32,5 +34,17 @@ public class Logs extends IdEntity {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

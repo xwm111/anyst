@@ -40,10 +40,14 @@
   编号：
   <input class="easyui-validatebox" name="" type="text" style="width:80px">
   分类：
-  <select class="easyui-combobox" panelHeight="auto" style="width:100px">
-    <option value="">所有</option>
-    <option value="">已绑定</option>
-    <option value="">未绑定</option>
+  <select class="easyui-combobox" panelHeight="auto" style="width:100px"
+  		 data-options="
+  		 url:'${ctx}/api/v1/class/listAllGiftGroupIncludeAll',
+  		 method:'get',
+  		 valueField:'id',
+  		 textField:'name',
+  		 value:'-1'
+  		 ">
   </select>
   <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-search">搜索</a>
 </div>
@@ -65,8 +69,8 @@ function rowFormater_money(value,row,index){
 }
 function rowFormater_action(value,row,index){
 	if(!!value){
-		var btns="<a class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\" onClick=\"edit()\">修改</a>"
-			btns+="<a class=\"easyui-linkbutton\" iconCls=\"icon-remove\" plain=\"true\" onClick=\"confirm('真的要删除码？')\">删除</a>"
+		var btns="<a class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\" onClick=\"edit('" + value + "')\">修改</a>"
+			btns+="<a class=\"easyui-linkbutton\" iconCls=\"icon-remove\" plain=\"true\" onClick=\"del('" + value + "')\">删除</a>"
 		return btns
 	}else{
 		return ""
@@ -82,7 +86,6 @@ function rowFormater_state(value,row,index){
 	}
 }
 
-
 function add(){
 	qDialog({
 		href:'${ctx}/inc/gift/inc_gift_list_add',
@@ -94,7 +97,16 @@ function add(){
 			text:'保存',
 			iconCls:'icon-save',
 			handler:function(){
-					qDialog({closed:true});
+				$('#createGiftForm').form('submit', {
+					url: '${ctx}/api/v1/gift/create',
+					onSubmit: function() {
+						return true;
+					},
+					success:function(data) {
+						alert("成功");
+					}
+				});
+				qDialog({closed:true});
 			}
 		},{
 			text:'关闭',
@@ -109,7 +121,7 @@ function add(){
 
 function edit(data){
 	qDialog({
-		href:'${ctx}/inc/gift/inc_gift_list_add',
+		href:'${ctx}/inc/gift/inc_gift_list_edit?giftId=' + data,
 		title:'修改',
 		iconCls:'icon-edit',
 		width:750,
@@ -118,7 +130,16 @@ function edit(data){
 			text:'保存',
 			iconCls:'icon-save',
 			handler:function(){
-					qDialog({closed:true});
+				$('#createGiftForm').form('submit', {
+					url: '${ctx}/api/v1/gift/update',
+					onSubmit: function() {
+						return true;
+					},
+					success:function(data) {
+						alert("成功");
+					}
+				});
+				qDialog({closed:true});
 			}
 		},{
 			text:'关闭',
@@ -132,5 +153,18 @@ function edit(data){
 
 function del(code){
 	
+}
+
+function searchProduct() {
+	var giftName = $('#giftName').val();
+	var giftCode = $('#giftCode').val();
+	var giftGroup = $("#giftGroup").combobox('getValue');
+	$('#grid_inc_gift_list').datagrid(
+			'load', 
+			{
+				'giftName' : giftName,
+				'giftCode' : giftCode,
+				'giftGroup' : giftGroup
+			});
 }
 </script>

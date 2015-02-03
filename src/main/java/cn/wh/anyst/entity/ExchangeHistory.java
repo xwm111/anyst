@@ -20,7 +20,7 @@ public class ExchangeHistory extends IdEntity {
 	private int giftNum;			//兑换礼物数;
 	private int tapNum;				//使用贴花数;
 	private String shipNum;			//快递单号;
-	private int status;				//状态(0 - 申请, 1 - 完成, 2 - 取消)
+	private int status;				//状态(0 - 申请(未确认), 1 - 已确认(未邮寄), 2 - 已经邮寄)
 	private String description;		//备注
 	public Date getSubmitDate() {
 		return submitDate;

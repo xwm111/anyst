@@ -121,6 +121,10 @@ public class BasicService {
 		return giftGroupDao.findByNameLike("%" + name + "%", new PageRequest(pageNumber - 1, pageSize));
 	}
 	
+	public List<GiftGroup> listAllGiftGroup() {
+		return Collections.unmodifiableList((List<GiftGroup>) giftGroupDao.findAll());
+	}
+	
 	/*
 	 * 通过ID查找礼品分类
 	 */
@@ -185,6 +189,20 @@ public class BasicService {
 		}
 		
 		return result;
+	}
+	
+	/*
+	 * 列出所有医院信息
+	 */
+	public List<Hospital> listAllHospital() {
+		return Collections.unmodifiableList((List<Hospital>) hospitalDao.findAll());
+	}
+	
+	/*
+	 * 根据医院ID列出所有部门
+	 */
+	public List<Department> listAllDepartment(Long hospitalId) {
+		return Collections.unmodifiableList((List<Department>) departmentDao.findByHospitalId(hospitalId));
 	}
 	
 	/*
