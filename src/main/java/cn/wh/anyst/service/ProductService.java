@@ -1,5 +1,6 @@
 package cn.wh.anyst.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,6 +81,13 @@ public class ProductService {
 		}
 		
 		return null;
+	}
+	
+	/*
+	 * 列出所有产品
+	 */
+	public List<Product> listAllProduct() {
+		return Collections.unmodifiableList((List<Product>)productDao.findAll());
 	}
 	
 	/*

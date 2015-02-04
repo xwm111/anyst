@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 
 import javax.servlet.ServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +20,9 @@ import cn.wh.anyst.service.BasicService;
 @RestController
 @RequestMapping("/api/v1/tap")
 public class TapRest {
-
+	
+	private final static Logger logger = LoggerFactory.getLogger(TapRest.class);
+	
 	@Autowired
 	private BasicService basicService;
 	
@@ -51,12 +55,15 @@ public class TapRest {
 			@RequestParam(value = "tapStatus", defaultValue = "0") int status,	//贴花状态
             @RequestParam("tapDescription") String description,					//贴花描述
             @RequestParam("tapName") String name,								//贴花名称
+            @RequestParam("tapProduct") String productCode,						//贴花绑定产品的编号
             ServletRequest request) {
+		logger.info("create tap ..................");
 		Tap tap = new Tap();
 		tap.setCode(code);
 		tap.setDescription(description);
 		tap.setStatus(status);
 		tap.setName(name);
+		tap.setProduct(productCode);
 		basicService.createTap(tap);
 		return 1;
 	}
@@ -67,12 +74,14 @@ public class TapRest {
 			@RequestParam(value = "tapStatus", defaultValue = "0") int status,	//贴花状态
             @RequestParam("tapDescription") String description,					//贴花描述
             @RequestParam("tapName") String name,								//贴花名称
+            @RequestParam("tapProduct") String productCode,						//贴花绑定产品的编号
             ServletRequest request) {
 		Tap tap = basicService.queryTapByCode(code);
 		if (tap != null) {
 			tap.setName(name);
 			tap.setDescription(description);
 			tap.setStatus(status);
+			tap.setProduct(productCode);
 			basicService.updateTap(tap);
 			return 1;
 		}

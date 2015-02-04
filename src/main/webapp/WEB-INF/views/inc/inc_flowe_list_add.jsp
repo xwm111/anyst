@@ -22,7 +22,7 @@
       <div title="基本信息" href="${ctx}/inc/basi/inc_flowe_list_add_infos"></div>
         </c:when>
         <c:otherwise>
-      <div title="基本信息" href="${ctx}/inc/basi/inc_flowe_list_edit_infos?tapCode=${tapBean.code}&tapName=${tapBean.name}&tapStatus=${tapBean.status}&tapDescription=${tapBean.description}"></div>
+      <div title="基本信息" href="${ctx}/inc/basi/inc_flowe_list_edit_infos?tapCode=${tapBean.code}&tapName=${tapBean.name}&tapStatus=${tapBean.status}&tapDescription=${tapBean.description}&tapProduct=${tapBean.product}"></div>
         </c:otherwise>
       </c:choose>
     </div>

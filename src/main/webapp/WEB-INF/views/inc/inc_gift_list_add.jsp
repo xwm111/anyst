@@ -21,7 +21,7 @@
       <div title="基本信息" href="${ctx}/inc/gift/inc_gift_list_add_infos"></div>
         </c:when>
         <c:otherwise>
-      <div title="基本信息" href="${ctx}/inc/gift/inc_gift_list_edit_infos"></div>
+      <div title="基本信息" href="${ctx}/inc/gift/inc_gift_list_edit_infos?giftCode=${giftBean.code}&giftName=${giftBean.giftName}&giftDescription=${giftBean.giftDiscribe}&productCode=${giftBean.product}&giftGroup=${giftBean.giftGroup}&giftPrice=${giftBean.giftPrice}&giftCost=${giftBean.giftCost}&exchangeValue=${giftBean.exchangeValue}"></div>
         </c:otherwise>
       </c:choose>
     </div>

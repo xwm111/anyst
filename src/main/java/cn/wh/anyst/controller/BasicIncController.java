@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 
 import javax.servlet.ServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,8 @@ import cn.wh.anyst.service.BasicService;
 @Controller
 @RequestMapping("/inc/basi")
 public class BasicIncController {
+	
+	private final static Logger logger = LoggerFactory.getLogger(BasicIncController.class);
 	
 	@Autowired
 	private BasicService basicService;
@@ -204,13 +208,16 @@ public class BasicIncController {
 			@RequestParam(value = "tapName") String name,						//贴花名称
 			@RequestParam(value = "tapStatus") int status,						//贴花状态
 			@RequestParam(value = "tapDescription") String description,			//贴花说明
+			@RequestParam(value = "tapProduct") String productCode,				//贴花对应产品编码
 			Model model,
 			ServletRequest request) throws UnsupportedEncodingException {
+		logger.info("product : " + productCode + " tapCode: " + code);
 		Tap tap = new Tap();
 		tap.setCode(code);
 		tap.setName(new String(name.getBytes("ISO-8859-1")));
 		tap.setStatus(status);
 		tap.setDescription(new String(description.getBytes("ISO-8859-1")));
+		tap.setProduct(productCode);
 		if (tap != null) {
 			model.addAttribute("tapBean", tap);
 		}

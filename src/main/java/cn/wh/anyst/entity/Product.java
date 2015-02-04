@@ -1,5 +1,7 @@
 package cn.wh.anyst.entity;
 
+import java.beans.Transient;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -61,7 +63,9 @@ public class Product extends IdEntity {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
 	@Override
+	@Transient
 	public String getOpt() {
 		return this.code;
 	}

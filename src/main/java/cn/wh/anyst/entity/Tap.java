@@ -1,5 +1,7 @@
 package cn.wh.anyst.entity;
 
+import java.beans.Transient;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -11,7 +13,7 @@ import javax.persistence.Table;
 public class Tap extends IdEntity {
 	private String code;		//贴花编号
 	private String name;		//贴花名称
-	private Long product;		//贴花对应产品ID
+	private String product;		//贴花对应产品编号
 	private String imgUrl;		//贴花图片地址
 	private int status;			//贴画状态 (0 - 启用, 1 - 停用)
 	private String description; //贴花说明
@@ -22,10 +24,10 @@ public class Tap extends IdEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Long getProduct() {
+	public String getProduct() {
 		return product;
 	}
-	public void setProduct(Long product) {
+	public void setProduct(String product) {
 		this.product = product;
 	}
 	public String getImgUrl() {
@@ -52,7 +54,9 @@ public class Tap extends IdEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	@Override
+	@Transient
 	public String getOpt() {
 		return this.code;
 	}

@@ -1,5 +1,7 @@
 package cn.wh.anyst.entity;
 
+import java.beans.Transient;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -15,9 +17,14 @@ public class Customer extends IdEntity {
 	private String message;			//关注消息
 	private Long hospital;			//医院ID
 	private Long department;		//科室ID
-	private Long group;				//分组ID
-	private int customerType;		//客户类型 (0 - 医生, 1 - 护士)
-	private int status;				//客户状态 (0 - 启用, 1 - 停用)
+	private Long group;				//分组ID (0 - 未分组)
+	private int customerType;		//客户类型 (0 - 未确定, 1 - 医生, 2 - 护士)
+	private int status;				//客户状态 (0 - 未确认, 1 - 确认)
+	
+	private String customerGroupName;	//用户分组名称
+	private String hospitalName;		//用户所属医院名称
+	private String departmentName;		//用户所属部门名称
+	
 	public String getName() {
 		return name;
 	}
@@ -65,5 +72,33 @@ public class Customer extends IdEntity {
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public Long getGroup() {
+		return group;
+	}
+	public void setGroup(Long group) {
+		this.group = group;
+	}
+	
+	@Transient 
+	public String getCustomerGroupName() {
+		return customerGroupName;
+	}
+	public void setCustomerGroupName(String customerGroupName) {
+		this.customerGroupName = customerGroupName;
+	}
+	@Transient 
+	public String getHospitalName() {
+		return hospitalName;
+	}
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
+	}
+	@Transient 
+	public String getDepartmentName() {
+		return departmentName;
+	}
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
 	}
 }

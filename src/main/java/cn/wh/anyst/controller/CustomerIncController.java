@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import cn.wh.anyst.service.GiftService;
+import cn.wh.anyst.service.CustomerService;
 
 /*
  * 客户页面Controller
@@ -16,7 +16,7 @@ import cn.wh.anyst.service.GiftService;
 public class CustomerIncController {
 	
 	@Autowired
-	private GiftService giftService;
+	private CustomerService customerService;
 	
 	@RequestMapping("/inc_cust_list")
 	public String custlist() {

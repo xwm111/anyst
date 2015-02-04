@@ -37,8 +37,57 @@
   
   <div class="separator"/>
   
-  <input class="easyui-validatebox" name="" type="text" style="width:180px" placeholder="姓名/医院/科室/身份/状态/分组">
-  
+  <input class="easyui-validatebox" name="" type="text" style="width:180px" placeholder="姓名关键字">
+  医院：
+  <select class="easyui-combobox" id="searchGiftGroup" panelHeight="auto" style="width:100px"
+  		 data-options="
+  		 url:'${ctx}/api/v1/class/listAllGiftGroupIncludeAll',
+  		 method:'get',
+  		 valueField:'id',
+  		 textField:'name',
+  		 value:'-1'
+  		 ">
+  </select>
+  科室：
+  <select class="easyui-combobox" id="searchGiftGroup" panelHeight="auto" style="width:100px"
+  		 data-options="
+  		 url:'${ctx}/api/v1/class/listAllGiftGroupIncludeAll',
+  		 method:'get',
+  		 valueField:'id',
+  		 textField:'name',
+  		 value:'-1'
+  		 ">
+  </select>
+  分组：
+  <select class="easyui-combobox" id="searchGiftGroup" panelHeight="auto" style="width:100px"
+  		 data-options="
+  		 url:'${ctx}/api/v1/class/listAllGiftGroupIncludeAll',
+  		 method:'get',
+  		 valueField:'id',
+  		 textField:'name',
+  		 value:'-1'
+  		 ">
+  </select>
+  身份：
+  <select class="easyui-combobox" id="searchGiftGroup" panelHeight="auto" style="width:100px"
+  		 data-options="
+  		 url:'${ctx}/api/v1/class/listAllGiftGroupIncludeAll',
+  		 method:'get',
+  		 valueField:'id',
+  		 textField:'name',
+  		 value:'-1'
+  		 ">
+  </select>
+  状态：
+  <select class="easyui-combobox" id="searchGiftGroup" panelHeight="auto" style="width:100px"
+  		 data-options="
+  		 url:'${ctx}/api/v1/class/listAllGiftGroupIncludeAll',
+  		 method:'get',
+  		 valueField:'id',
+  		 textField:'name',
+  		 value:'-1'
+  		 ">
+  </select>
   <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-search">搜索</a>
 </div>
 <script>

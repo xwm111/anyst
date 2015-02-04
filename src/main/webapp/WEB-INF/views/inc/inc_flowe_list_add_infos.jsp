@@ -34,6 +34,40 @@
   <div class="nullLine" style="height:4px;"></div>
   <table border="0" cellpadding="0" cellspacing="4" class="content">
     <tr>
+      <th width="100" align="right">所属产品：</th>
+      <c:choose>
+      	<c:when test="${empty tapBean}">
+      <td><select class="easyui-combobox" panelHeight="auto" style="width:180px;" name="tapProduct" id="tapProduct" 
+      	data-options="
+      	 url:'${ctx}/api/v1/product/listAllProduct',
+  		 method:'get',
+  		 valueField:'code',
+  		 textField:'name',
+  		 onLoadSuccess: function(data){
+  		 	if(data) {
+  		 		$(this).combobox('setValue', data[0].code);
+			}
+  		 }
+      ">
+      </select></td>
+        </c:when>
+        <c:otherwise>
+        <td><select class="easyui-combobox" panelHeight="auto" style="width:180px;" name="tapProduct" id="tapProduct" 
+      	data-options="
+      	 url:'${ctx}/api/v1/product/listAllProduct',
+  		 method:'get',
+  		 valueField:'code',
+  		 textField:'name',
+  		 value: '${tapBean.product}'
+      ">
+      </select></td>
+        </c:otherwise>
+      </c:choose>
+    </tr>
+  </table>
+  <div class="nullLine" style="height:4px;"></div>
+  <table border="0" cellpadding="0" cellspacing="4" class="content">
+    <tr>
       <th width="100" align="right">贴花说明：</th>
       <td><textarea name="tapDescription" style="width:220px; height:150px;">${tapBean.description}</textarea></td>
     </tr>

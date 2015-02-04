@@ -29,6 +29,9 @@ public interface TapDAO extends PagingAndSortingRepository<Tap, Long> {
 	
 	public Page<Tap> findByCodeAndStatusAndNameLike(String code, int status, String name, Pageable pageable);
 	
+	//通过产品ID和使用状态查找贴花对象
+	public Tap findByProductAndStatus(String productId, int status);
+	
 	@Modifying
 	@Query("delete Tap t where t.code = ?1")
 	public int deleteByCode(String code);

@@ -24,11 +24,13 @@ public class GiftRest {
 	@Autowired
 	private GiftService giftService;
 
+	//列出礼品信息并分页
 	@RequestMapping(method = RequestMethod.GET)
 	public RestQueryResultModal<Gift> list(
-			@RequestParam(value = "giftCode") String code,												//礼物编码
-			@RequestParam(value = "giftName") String name,												//礼物名称
-			@RequestParam(value = "giftGroup", defaultValue = "-1") Long groupId,						//分组ID
+			@RequestParam(value = "giftCode", defaultValue = "") String code,							//礼物编码
+			@RequestParam(value = "giftName", defaultValue = "") String name,							//礼物名称
+			@RequestParam(value = "giftGroup", defaultValue = "-1") Long groupId,						//礼物分组ID
+			@RequestParam(value = "giftStatus", defaultValue = "-1") int status,						//礼物状态
 			@RequestParam(value = "page", defaultValue = "1") int pageNumber, 							//分页第几页
 			@RequestParam(value = "rows", defaultValue = RestCommonModal.PAGE_SIZE) int pageSize, 		//每页数量
             @RequestParam(value = "sortType", defaultValue = "auto") String sortType,					//排序规则
@@ -36,13 +38,14 @@ public class GiftRest {
 			) throws UnsupportedEncodingException {
 		Page<Gift> giftPqge = giftService.listGift(
 				(name.equals("") ? null : new String(name.getBytes("ISO-8859-1"))),
-				code,
-				groupId,
+				(code.equals("") ? null : code),
+				groupId, status,
 				pageNumber, pageSize);
 		RestQueryResultModal<Gift> result = new RestQueryResultModal<Gift>(giftPqge.getTotalElements(), giftPqge.getContent());
 		return result;
 	}
 	
+	//创建新礼品信息
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public int create(
 			@RequestParam("giftCode") String code,								//礼物编码
@@ -52,6 +55,8 @@ public class GiftRest {
 			@RequestParam("giftGroup") Long groupId,							//礼物对应分组ID 
 			@RequestParam("giftPrice") int price,								//礼物的市场价格
 			@RequestParam("giftCost") int cost,									//礼物的成本价格
+			@RequestParam(value = "giftStatus", defaultValue = "0") int status,	//礼物状态							//礼物状态
+			@RequestParam("exchangeValue") int value,							//礼物兑换个数
 			ServletRequest request
 			) {
 		Gift gift = new Gift();
@@ -62,10 +67,13 @@ public class GiftRest {
 		gift.setGiftGroup(groupId);
 		gift.setGiftPrice(price);
 		gift.setGiftCost(cost);
+		gift.setStatus(status);
+		gift.setExchangeValue(value);
 		giftService.createGift(gift);
 		return 1;
 	}
 	
+	//更新礼品信息
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public int update(
 			@RequestParam("giftCode") String code,								//礼物编码
@@ -75,6 +83,8 @@ public class GiftRest {
 			@RequestParam("giftGroup") Long groupId,							//礼物对应分组ID 
 			@RequestParam("giftPrice") int price,								//礼物的市场价格
 			@RequestParam("giftCost") int cost,									//礼物的成本价格
+			@RequestParam(value = "giftStatus", defaultValue = "0") int status,	//礼物状态
+			@RequestParam("exchangeValue") int value,							//礼物兑换个数
 			ServletRequest request
 			) {
 		Gift gift = giftService.queryGiftByCode(code);
@@ -86,12 +96,15 @@ public class GiftRest {
 			gift.setGiftGroup(groupId);
 			gift.setGiftPrice(price);
 			gift.setGiftCost(cost);
+			gift.setStatus(status);
+			gift.setExchangeValue(value);
 			giftService.createGift(gift);
 			return 1;
 		}
 		return 0;
 	}
 	
+	//删除礼品信息
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public int delete(
 			@RequestParam("giftCode") String code,								//礼物编码
@@ -101,4 +114,33 @@ public class GiftRest {
 		return 1;
 	}
 	
+	//礼品上架
+	@RequestMapping(value = "/shiftOn", method = RequestMethod.POST)
+	public int shiftOn(
+			@RequestParam("giftCode") String code,								//礼物编码
+			ServletRequest request
+			) {
+		Gift gift = giftService.queryGiftByCode(code);
+		if (gift != null) {
+			gift.setStatus(1);
+			giftService.createGift(gift);
+			return 1;
+		}
+		return 0;
+	}
+	
+	//礼品下架
+	@RequestMapping(value = "/shiftOff", method = RequestMethod.POST)
+	public int shiftOff(
+			@RequestParam("giftCode") String code,								//礼物编码
+			ServletRequest request
+			) {
+		Gift gift = giftService.queryGiftByCode(code);
+		if (gift != null) {
+			gift.setStatus(0);
+			giftService.createGift(gift);
+			return 1;
+		}
+		return 0;
+	}
 }

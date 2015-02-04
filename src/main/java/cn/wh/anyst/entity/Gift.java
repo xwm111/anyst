@@ -1,5 +1,7 @@
 package cn.wh.anyst.entity;
 
+import java.beans.Transient;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -17,6 +19,12 @@ public class Gift extends IdEntity {
 	private int	   giftCost;		//礼品的成本 （分为单位）
 	private int    giftPrice;		//礼品的市场价格 （分为单位）
 	private Long   giftGroup;		//礼品分组ID
+	private int    exchangeValue;	//礼品兑换个数
+	private int    status;			//礼品状态（0 － 下架, 1 － 上架)
+	
+	private String giftGroupName;	//礼品分组名称
+	private String productName;		//礼品对应的产品名称
+	private String tapImgUrls;		//产品对应贴花图片
 	
 	public String getProduct() {
 		return product;
@@ -65,5 +73,43 @@ public class Gift extends IdEntity {
 	}
 	public void setCode(String code) {
 		this.code = code;
+	}
+	public int getExchangeValue() {
+		return exchangeValue;
+	}
+	public void setExchangeValue(int exchangeValue) {
+		this.exchangeValue = exchangeValue;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	@Transient 
+	public String getGiftGroupName() {
+		return giftGroupName;
+	}
+	public void setGiftGroupName(String giftGroupName) {
+		this.giftGroupName = giftGroupName;
+	}
+	@Transient
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	@Transient
+	public String getTapImgUrls() {
+		return tapImgUrls;
+	}
+	public void setTapImgUrls(String tapImgUrls) {
+		this.tapImgUrls = tapImgUrls;
+	}
+	@Override
+	@Transient 
+	public String getOpt() {
+		return this.code;
 	}
 }

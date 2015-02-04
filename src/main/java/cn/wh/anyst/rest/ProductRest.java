@@ -1,6 +1,7 @@
 package cn.wh.anyst.rest;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.ServletRequest;
 
@@ -25,6 +26,7 @@ public class ProductRest {
 	@Autowired
 	private ProductService productService;
 	
+	//列出所有产品并分页
 	@RequestMapping(method = RequestMethod.GET)
 	public RestQueryResultModal<Product> list(
 			@RequestParam(value = "productName", defaultValue = "") String productName,							//产品名称
@@ -43,11 +45,19 @@ public class ProductRest {
 		return result;
 	}
 	
+	//通过产品编码查找产品
 	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
 	public Product list(@PathVariable("code") String code) {
 		return productService.findByCode(code);
 	}
 	
+	//列出所有产品
+	@RequestMapping(value = "/listAllProduct", method = RequestMethod.GET)
+	public List<Product> listAllProduct() {
+		return productService.listAllProduct();
+	}
+	
+	//创建新产品
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public void create(@RequestParam("productCode") String code,					//产品代码
             @RequestParam("productDescription") String description,					//产品描述
@@ -61,6 +71,7 @@ public class ProductRest {
 		productService.newProduct(product);
 	}
 	
+	//更新产品信息
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public void update(@RequestParam("productCode") String code,					//产品代码
             @RequestParam("productDescription") String description,					//产品描述
@@ -75,6 +86,7 @@ public class ProductRest {
 		}
 	}
 	
+	//删除产品
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public int update(@RequestParam("productCode") String code,					//产品代码
             ServletRequest request) {
