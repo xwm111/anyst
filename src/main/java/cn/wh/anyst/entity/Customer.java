@@ -17,7 +17,7 @@ public class Customer extends IdEntity {
 	private String message;			//关注消息
 	private Long hospital;			//医院ID
 	private Long department;		//科室ID
-	private Long group;				//分组ID (0 - 未分组)
+	private Long customerGroup;				//分组ID (0 - 未分组)
 	private int customerType;		//客户类型 (0 - 未确定, 1 - 医生, 2 - 护士)
 	private int status;				//客户状态 (0 - 未确认, 1 - 确认)
 	
@@ -73,11 +73,11 @@ public class Customer extends IdEntity {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public Long getGroup() {
-		return group;
+	public Long getCustomerGroup() {
+		return customerGroup;
 	}
-	public void setGroup(Long group) {
-		this.group = group;
+	public void setCustomerGroup(Long customerGroup) {
+		this.customerGroup = customerGroup;
 	}
 	
 	@Transient 
