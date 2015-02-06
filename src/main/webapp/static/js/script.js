@@ -3,7 +3,7 @@
 /*********************************************************************************************************************/
 //初始设置
 /*********************************************************************************************************************/
-var hostUrl="http://localhost:8080/anyst";
+var hostUrl="";
 var root="../";//设置平台默认路径
 var theme="default";//设置默认调用皮肤
 var UrlRequest=getUrlRequest();//地址样取get传值，返回object
@@ -31,7 +31,7 @@ $.extend({
 });
 
 //加载系统样式
-$.include([hostUrl+"/static/js/jquery/easyUI/jquery.easyui.min.js",hostUrl+"/static/js/jquery/easyUI/locale/easyui-lang-zh_CN.js"]);
+$.include([hostUrl+"static/js/jquery/easyUI/jquery.easyui.min.js",hostUrl+"static/js/jquery/easyUI/locale/easyui-lang-zh_CN.js"]);
 
 
 $(function(){
