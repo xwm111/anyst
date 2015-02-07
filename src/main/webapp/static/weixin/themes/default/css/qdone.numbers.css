@@ -1,0 +1,53 @@
+/* CSS Document */
+
+.qNumbers-input-contents{
+	display:inline-block;
+	border:1px solid #dbdbdb;
+	border-radius:4px;
+	background-color:#FFF;
+	height:32px;
+	padding:0px;
+}
+.qNumbers-input-contents.disabled{
+	background-color:#f1f1f1;
+	color:#999;
+}
+
+.qNumbers-input-contents a{
+	vertical-align:middle;
+	height:24px;
+	line-height:24px;
+}
+.qNumbers-input-contents a.btn-l{
+	float:left;
+	padding:4px;
+	border-right:1px solid #dbdbdb;
+}
+
+.qNumbers-input-contents a.btn-r{
+	float:right;
+	padding:4px;
+	border-left:1px solid #dbdbdb;
+}
+
+.qNumbers-input-contents a .icon-l{
+	font-size:24px;
+	height:24px;
+	width:24px;
+	line-height:24px;
+}
+.qNumbers-input-contents a .icon-l::before{
+	width:24px;
+	height:24px;
+}
+.qNumbers-input-contents input{
+	display:inline-block;
+	height:24px;
+	line-height:24px;
+	min-width:60px;
+	border:0px;
+	margin:0px;
+	padding:4px;
+	background-color:transparent;
+	font-size:14px;
+}

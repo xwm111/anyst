@@ -1,5 +1,6 @@
 package cn.wh.anyst.service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -165,6 +166,19 @@ public class BasicService {
 	 */
 	public void deleteGiftGroup(CustomerGroup customerGroup) {
 		customerGroupDao.delete(customerGroup);
+	}
+	
+	/*
+	 * 根据产品编号获取礼品分类
+	 */
+	public List<GiftGroup> findGiftGroupByProductCode(String code){
+		//TODO 根据产品CODE查找该产品下的所有礼品分类
+		List<GiftGroup> fakelist = new ArrayList<GiftGroup>();
+		GiftGroup gg= new GiftGroup();
+		gg.setId(1l);
+		gg.setName("fakegg1");;
+		fakelist.add(gg);
+		return fakelist;
 	}
 	
 	/******************************************

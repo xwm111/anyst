@@ -1,0 +1,47 @@
+/* CSS Document */
+
+@font-face {
+    font-family: 'qdoneFonts';
+	src:url(../images/qdoneFonts.eot);
+    src:url('../images/qdoneFonts.eot');
+    src: url('../images/qdoneFonts.eot?#iefix') format('embedded-opentype'),
+         /*url('../images/emallFont.woff') format('woff'),*/
+         url('../images/qdoneFonts.ttf') format('truetype'),
+         url('../images/qdoneFonts.svg#webchar') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.qdoneFonts{
+	font-family:'qdoneFonts';
+	vertical-align:middle;
+	display: inline-block;
+}
+.font-12-g{
+	font-size:12px;
+	color:#666;
+}
+.font-12-g-del{
+	font-size:12px;
+	color:#999;
+	text-decoration:line-through;
+}
+.font-14-g{
+	font-size:14px;
+	color:#666;
+}
+
+
+.font-14-org{
+	font-size:14px;
+	color:#F60;
+}
+.font-16-org{
+	font-size:16px;
+	color:#F60;
+}
+
+.font-16-gre{
+	font-size:16px;
+	color:#060;
+}
