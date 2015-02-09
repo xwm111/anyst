@@ -1,5 +1,6 @@
 package cn.wh.anyst.service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -65,6 +66,26 @@ public class BasicService {
 	
 	public CustomerGroup queryCustomerGroupById(Long id) {
 		return customerGroupDao.findOne(id);
+	}
+	
+	/*
+	 * 列出所有用户分组
+	 */
+	public List<CustomerGroup> listAllCustomerGroup() {
+		return Collections.unmodifiableList((List<CustomerGroup>)customerGroupDao.findAll());
+	}
+	
+	/*
+	 * 列出所有用户分组
+	 */
+	public List<CustomerGroup> listAllCustomerGroupIncludeAll() {
+		ArrayList<CustomerGroup> result = new ArrayList<CustomerGroup>();
+		result.addAll(Collections.unmodifiableList((List<CustomerGroup>)customerGroupDao.findAll()));
+		CustomerGroup all = new CustomerGroup();
+		all.setId(-1L);
+		all.setName("所有");
+		result.add(0, all);
+		return result;
 	}
 	
 	/*
@@ -199,10 +220,37 @@ public class BasicService {
 	}
 	
 	/*
+	 * 列出所有医院信息含所有医院信息
+	 */
+	public List<Hospital> listAllHospitalIncludeAll() {
+		ArrayList<Hospital> result = new ArrayList<Hospital>();
+		result.addAll(Collections.unmodifiableList((List<Hospital>) hospitalDao.findAll()));
+		Hospital all = new Hospital();
+		all.setId(-1L);
+		all.setHospitalName("所有");
+		result.add(0, all);
+		return result;
+	}
+
+	
+	/*
 	 * 根据医院ID列出所有部门
 	 */
 	public List<Department> listAllDepartment(Long hospitalId) {
 		return Collections.unmodifiableList((List<Department>) departmentDao.findByHospitalId(hospitalId));
+	}
+	
+	/*
+	 * 根据医院ID列出所有部门
+	 */
+	public List<Department> listAllDepartmentIncludeAll(Long hospitalId) {
+		ArrayList<Department> result = new ArrayList<Department>();
+		result.addAll(Collections.unmodifiableList((List<Department>) departmentDao.findByHospitalId(hospitalId)));
+		Department all = new Department();
+		all.setId(-1L);
+		all.setDepartmentName("所有");
+		result.add(0, all);
+		return result;
 	}
 	
 	/*

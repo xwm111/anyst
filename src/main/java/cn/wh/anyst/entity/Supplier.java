@@ -13,6 +13,7 @@ public class Supplier extends IdEntity {
 	private String description;	//供应商描述
 	private String email;		//供应商邮件地址
 	private String phone;		//供应商联系电话
+	private int status;			//供应商状态(0 - 停用, 1 - 启用)
 	public String getName() {
 		return name;
 	}

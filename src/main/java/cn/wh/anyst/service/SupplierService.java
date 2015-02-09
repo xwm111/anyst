@@ -24,7 +24,7 @@ public class SupplierService {
 		if (name == null) {
 			return supplierDao.findAll(new PageRequest(pageNumber - 1, pageSize));
 		} else {
-			return supplierDao.findByNameLike(name, new PageRequest(pageNumber - 1, pageSize));
+			return supplierDao.findByNameLikeOrPhoneLikeOrEmailLike("%" + name + "%", "%" + name + "%", "%" + name + "%", new PageRequest(pageNumber - 1, pageSize));
 		}
 	}
 	

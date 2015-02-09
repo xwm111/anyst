@@ -19,7 +19,7 @@ import cn.wh.anyst.service.SupplierService;
  * 经销商restful接口
  */
 @RestController
-@RequestMapping("value=/api/v1/dist")
+@RequestMapping("/api/v1/dist")
 public class SupplierRest {
 	
 	@Autowired
@@ -27,7 +27,7 @@ public class SupplierRest {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public RestQueryResultModal<Supplier> list(
-			@RequestParam(value = "supplierName", defaultValue = "") String name,						//销售商名称						
+			@RequestParam(value = "supplierName", defaultValue = "") String name,						//销售商名称或者销售上电话号码					
 			@RequestParam(value = "page", defaultValue = "1") int pageNumber, 							//分页第几页
 			@RequestParam(value = "rows", defaultValue = RestCommonModal.PAGE_SIZE) int pageSize, 		//每页数量
             @RequestParam(value = "sortType", defaultValue = "auto") String sortType,					//排序规则

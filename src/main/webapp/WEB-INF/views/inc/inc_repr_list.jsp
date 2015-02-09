@@ -11,7 +11,7 @@
             collapsible:true,
             onLoadSuccess:dataGridOnloadSuccess,
             pagination:true,
-            url:'../data/data_repr_list.json',method:'get'
+            url:'${ctx}/api/v1/repr',method:'get'
             ">
   <thead>
     <tr>
@@ -25,27 +25,21 @@
 </table>
 <div id="gridTools_inc_repr_list" style="padding:5px;height:auto">
   <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="add()">新增</a>
-  <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
-  <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onClick="relation()">产品/客户关联</a>
-  
   <div class="separator"/>
-  
   <input class="easyui-validatebox" name="" type="text" style="width:180px" placeholder="名称/所属经销商/电话">
-  
-  <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-search">搜索</a>
+  <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-search" onClick="searchRepresentor()">搜索</a>
 </div>
 <script>
 function rowFormater_action(value,row,index){
 	if(!!value){
-		var btns="<a class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\" onClick=\"edit()\">修改</a>"
-			btns+="<a class=\"easyui-linkbutton\" iconCls=\"icon-remove\" plain=\"true\" onClick=\"confirm('真的要停用码？')\">停用</a>"
-			btns+="<a class=\"easyui-linkbutton\" iconCls=\"icon-remove\" plain=\"true\" onClick=\"relation()\">产品/客户关联</a>"
+		var btns="<a class=\"easyui-linkbutton\" iconCls=\"icon-edit\" plain=\"true\" onClick=\"edit('" + value + "')\">修改</a>"
+			btns+="<a class=\"easyui-linkbutton\" iconCls=\"icon-remove\" plain=\"true\" onClick=\"del('" + value + "')\">停用</a>"
+			btns+="<a class=\"easyui-linkbutton\" iconCls=\"icon-remove\" plain=\"true\" onClick=\"relation('" + value + "')\">产品/客户关联</a>"
 		return btns
 	}else{
 		return ""
 	}
 }
-
 
 function add(){
 	qDialog({
@@ -58,7 +52,16 @@ function add(){
 			text:'保存',
 			iconCls:'icon-save',
 			handler:function(){
-					qDialog({closed:true});
+				$('#createRepresentorForm').form('submit', {
+					url: '${ctx}/api/v1/serv/update',
+					onSubmit: function() {
+						return true;
+					},
+					success:function(data) {
+						alert("成功");
+					}
+				});
+				qDialog({closed:true});
 			}
 		},{
 			text:'关闭',
@@ -68,12 +71,11 @@ function add(){
 			}
 		}]
 	})
-	
 }
 
-function edit(){
+function edit(id){
 	qDialog({
-		href:'${ctx}/inc/repr/inc_repr_list_edit',
+		href:'${ctx}/inc/repr/inc_repr_list_edit?' + id,
 		title:'修改',
 		iconCls:'icon-edit',
 		width:750,
@@ -82,7 +84,16 @@ function edit(){
 			text:'保存',
 			iconCls:'icon-save',
 			handler:function(){
-					qDialog({closed:true});
+				$('#createRepresentorForm').form('submit', {
+					url: '${ctx}/api/v1/serv/update',
+					onSubmit: function() {
+						return true;
+					},
+					success:function(data) {
+						alert("成功");
+					}
+				});
+				qDialog({closed:true});
 			}
 		},{
 			text:'关闭',
@@ -92,12 +103,11 @@ function edit(){
 			}
 		}]
 	})
-	
 }
 
-function relation(){
+function relation(id){
 	qDialog({
-		href:'${ctx}/inc/repr/inc_repr_list_relation',
+		href:'${ctx}/inc/repr/inc_repr_list_relation？' + id,
 		title:'修改',
 		iconCls:'icon-edit',
 		width:1000,
@@ -106,7 +116,23 @@ function relation(){
 			text:'保存',
 			iconCls:'icon-save',
 			handler:function(){
-					qDialog({closed:true});
+				var customerSelection = $('#grid_inc_repr_list_relation_custList');
+				var productSelection = $('#grid_inc_repr_list_relation_prodList');
+				$.ajax({
+					url : '${ctx}/api/v1/repr/relationUpdate',
+			        data:{'serviceId':id},
+			        cache : false,
+			        async : false,
+			        type : "POST",
+			        dataType : 'json',
+			        success : function (data){
+			    	   	alert("停用成功");
+			        },
+			        error: function(data) {
+			        	alert("停用失败: " + data);
+			        }
+				});
+				qDialog({closed:true});
 			}
 		},{
 			text:'关闭',
@@ -116,5 +142,26 @@ function relation(){
 			}
 		}]
 	})
+}
+
+function del(id){
+	$.ajax({
+		url : '${ctx}/api/v1/repr/delete',
+        data:{'serviceId':id},
+        cache : false,
+        async : false,
+        type : "POST",
+        dataType : 'json',
+        success : function (data){
+    	   	alert("停用成功");
+        },
+        error: function(data) {
+        	alert("停用失败: " + data);
+        }
+	});
+}
+
+function searchRepresentor(){
+	
 }
 </script>

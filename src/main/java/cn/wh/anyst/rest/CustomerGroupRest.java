@@ -1,6 +1,7 @@
 package cn.wh.anyst.rest;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.ServletRequest;
 
@@ -39,6 +40,18 @@ public class CustomerGroupRest {
 				pageSize);
 		RestQueryResultModal<CustomerGroup> result = new RestQueryResultModal<CustomerGroup>(groups.getTotalElements(), groups.getContent());
 		return result;
+	}
+	
+	//列出所有客户分组
+	@RequestMapping(value = "/listAllCustomerGroup", method = RequestMethod.GET)
+	public List<CustomerGroup> listAllCustomerGroup() {
+		return basicService.listAllCustomerGroup();
+	}
+	
+	//列出所有客户分组并包含所有
+	@RequestMapping(value = "/listAllCustomerGroupIncludeAll", method = RequestMethod.GET)
+	public List<CustomerGroup> listAllCustomerGroupIncludeAll() {
+		return basicService.listAllCustomerGroupIncludeAll();
 	}
 	
 	//通过ID查询组信息

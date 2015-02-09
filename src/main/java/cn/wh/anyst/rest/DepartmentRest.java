@@ -40,12 +40,27 @@ public class DepartmentRest {
 		return basicService.listAllHospital();
 	}
 	
+	//列出所有医院的信息含所有医院
+	@RequestMapping(value="/listAllHospitalIncludeAll", method = RequestMethod.GET)
+	public List<Hospital> listAllHospitalIncludeAll(
+			ServletRequest request) {
+		return basicService.listAllHospitalIncludeAll();
+	}
+	
 	//根据医院ID列出所有部门的信息
 	@RequestMapping(value="/listAllDepartment", method = RequestMethod.GET)
-	public List<Hospital> listAllDepartment(
+	public List<Department> listAllDepartment(
 			@RequestParam(value = "hospitalId") Long hospitalId,						//医院ID
 			ServletRequest request) {
-		return basicService.listAllHospital();
+		return basicService.listAllDepartment(hospitalId);
+	}
+	
+	//根据医院ID列出所有部门的信息
+	@RequestMapping(value="/listAllDepartmentIncludeAll", method = RequestMethod.GET)
+	public List<Department> listAllDepartmentIncludeAll(
+			@RequestParam(value = "hospitalId") Long hospitalId,						//医院ID
+			ServletRequest request) {
+		return basicService.listAllDepartmentIncludeAll(hospitalId);
 	}
 	
 	//新增医院

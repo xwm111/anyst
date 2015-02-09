@@ -46,8 +46,8 @@ public class CustomerRest {
 			@RequestParam(value = "customerPhone") String phone,											//客户电话
 			@RequestParam(value = "customerWebchat") String webchat,										//客户微信号
 			@RequestParam(value = "customerMessage") String message,										//客户关注消息
-			@RequestParam(value = "customerHospital") Long hospitalId,										//医院ID
-			@RequestParam(value = "customerDepartment") Long departmentId,									//部门ID
+			@RequestParam(value = "customerHospital", defaultValue = "-1") Long hospitalId,										//医院ID
+			@RequestParam(value = "customerDepartment", defaultValue = "-1") Long departmentId,									//部门ID
 			@RequestParam(value = "customerType", defaultValue = "-1") int type,							//客户类型
 			@RequestParam(value = "customerStatus", defaultValue = "0") int status,							//客户状态
             ServletRequest request
@@ -73,8 +73,8 @@ public class CustomerRest {
 			@RequestParam(value = "customerPhone") String phone,											//客户电话
 			@RequestParam(value = "customerWebchat") String webchat,										//客户微信号
 			@RequestParam(value = "customerMessage") String message,										//客户关注消息
-			@RequestParam(value = "customerHospital") Long hospitalId,										//医院ID
-			@RequestParam(value = "customerDepartment") Long departmentId,									//部门ID
+			@RequestParam(value = "customerHospital", defaultValue = "-1") Long hospitalId,										//医院ID
+			@RequestParam(value = "customerDepartment", defaultValue = "-1") Long departmentId,									//部门ID
 			@RequestParam(value = "customerType", defaultValue = "-1") int type,							//客户类型
 			@RequestParam(value = "customerStatus", defaultValue = "0") int status,							//客户状态
             ServletRequest request

@@ -14,20 +14,20 @@
     <tr>
       <th width="100" align="right">使用状态：</th>
       <c:choose>
-				<c:when test="${empty tapBean}">
-		<td><input id="tapStatusCheckBox" name="tapStatus" type="checkbox" value="1" onClick="changeStatus()" checked></td>
-				</c:when>
-				<c:otherwise>
-					<c:choose>
-						<c:when test="${tapBean.status == 0}">	
-		<td><input id="tapStatusCheckBox" name="tapStatus" type="checkbox" value="0" onClick="changeStatus()"></td>
-						</c:when>
-						<c:otherwise>
-		<td><input id="tapStatusCheckBox" name="tapStatus" type="checkbox" value="1" onClick="changeStatus()" checked></td>
-						</c:otherwise>
-					</c:choose>
-				</c:otherwise>
-			</c:choose>
+		<c:when test="${empty tapBean}">
+		  <td><input id="tapStatusCheckBox" name="tapStatus" type="checkbox" value="1" onClick="changeStatus()" checked></td>
+		</c:when>
+		<c:otherwise>
+		  <c:choose>
+            <c:when test="${tapBean.status == 0}">	
+		      <td><input id="tapStatusCheckBox" name="tapStatus" type="checkbox" value="0" onClick="changeStatus()"></td>
+		    </c:when>
+		    <c:otherwise>
+			  <td><input id="tapStatusCheckBox" name="tapStatus" type="checkbox" value="1" onClick="changeStatus()" checked></td>
+		    </c:otherwise>
+		  </c:choose>
+		</c:otherwise>
+	  </c:choose>
       
     </tr>
   </table>
