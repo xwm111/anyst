@@ -26,8 +26,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.wh.anyst.entity.GiftGroup;
 import cn.wh.anyst.entity.Product;
 import cn.wh.anyst.service.BasicService;
+import cn.wh.anyst.service.ExchangeHistoryService;
+import cn.wh.anyst.service.GiftService;
 import cn.wh.anyst.service.ProductService;
 import cn.wh.anyst.util.WxUserInfoUpdateEventHandler;
+import cn.wh.anyst.view.GiftView;
 
 /*
  * 微信controller
@@ -46,8 +49,15 @@ public class weixinController {
 
 	@Autowired
 	private ProductService productService;
+	
 	@Autowired
 	private WxMpMessageHandler contenthandler;
+	
+	@Autowired
+	private GiftService giftService;
+	
+	@Autowired
+	private ExchangeHistoryService exchangeHistoryService;
 	
 	@RequestMapping("anystwx")
 	@ResponseBody
@@ -130,7 +140,8 @@ public class weixinController {
 	public String giftDetail(@PathVariable("id") String id, Model model) {
 		logger.debug("手机访问--查询礼品详情---礼品ID:" + id);
 		model.addAttribute("id", id);
-		// TODO 根据礼品ID查询礼品详细信息
+		GiftView view =  giftService.findGiftById(id);
+		model.addAttribute("gift",view);
 		return "wx/gift_list_view";
 	}
 
@@ -145,7 +156,7 @@ public class weixinController {
 	@RequestMapping(value = "mbbuygift", method = RequestMethod.POST)
 	public String buyGift(@RequestParam("id") String id, @RequestParam("number") int number, HttpSession session, Model model) {
 		logger.debug("手机访问--礼品购买---礼品ID:" + id + "   礼品数量:" + number);
-		// TODO 根据礼品ID查询礼品详细信息
+		exchangeHistoryService.orderGift(id);
 		model.addAttribute("pcode", session.getAttribute("pcode"));
 		return "wx/gift_list_buy";
 	}

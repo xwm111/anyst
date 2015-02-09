@@ -17,6 +17,12 @@ public class ExchangeHistoryService {
 	
 	@Autowired
 	private ExchangeHistoryDAO exchangeHistoryDAO;
+
+	//根据礼品id创建订单，客户信息从session中取，
+	public void orderGift(String id) {
+		// TODO 根据礼品id创建订单，客户信息从session中取，创建订单之后，需要通过微信发消息给此客户相关的代表
+		
+	}
 	
 	/*
 	public Page<ExchangeHistory> listExchangeHistory() {

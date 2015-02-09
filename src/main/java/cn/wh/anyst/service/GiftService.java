@@ -23,6 +23,7 @@ import cn.wh.anyst.repository.GiftDAO;
 import cn.wh.anyst.repository.GiftGroupDAO;
 import cn.wh.anyst.repository.ProductDAO;
 import cn.wh.anyst.repository.TapDAO;
+import cn.wh.anyst.view.GiftView;
 
 /*
  * 礼物业务服务
@@ -169,5 +170,17 @@ public class GiftService {
 	 */
 	public void deleteGiftByCode(String code) {
 		giftDao.deleteByCode(code);
+	}
+
+	// 根据产品pcode,礼品分组giftgroup,贴花数量范围flowerrange 分页page查询礼品集合
+		//贴花数量范围说明 flowerrange 0表示1-5，1表示 6-10 ，2表示 11-15 目前暂用这3个值
+	public Page<Gift> findGifyByProductGroupFlowerrange(String pcode, String giftgroup, String flowerrange, int page) {
+		// TODO 根据产品pcode,礼品分组giftgroup,贴花数量范围flowerrange 分页page查询礼品集合
+		return null;
+	}
+
+	public GiftView findGiftById(String id) {
+		// TODO 根据礼品的Id查询到礼品的详情，并转换为view
+		return null;
 	}
 }
