@@ -137,12 +137,16 @@ public class GiftRest {
 	// 根据产品pcode,礼品分组giftgroup,贴花数量范围flowerrange 分页page查询礼品集合
 	//贴花数量范围说明 flowerrange 0表示1-5，1表示 6-10 ，2表示 11-15 目前暂用这3个值
 	@RequestMapping(value = "/mbquery", method = RequestMethod.GET)
-	public RestQueryResultModal<Gift> mbliftquery(@RequestParam("pcode") String pcode, @RequestParam("giftgroup") String giftgroup,
-			@RequestParam("flowerrange") String flowerrange,@RequestParam("page") int page) {
+	public RestQueryResultModal<Gift> mbliftquery(
+			@RequestParam("pcode") String pcode, 
+			@RequestParam("giftgroup") Long giftgroup,
+			@RequestParam("flowerrange") String flowerrange,
+			@RequestParam("page") int pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
 		//TODO  根据产品pcode,礼品分组giftgroup,贴花数量范围flowerrange 分页page查询礼品集合
 		logger.debug("手机访问，查询礼品列表，查询参数 pcode:"+pcode+"  giftgroup:"+giftgroup+" flowerrange:"+flowerrange);
 		//用户测试，使用了全部的gift 没管分页
-		Page<Gift> giftPqge = giftService.listGift(null,null,-1l,-1,5,page);
+		Page<Gift> giftPqge = giftService.listGift(null,null,-1l,-1,5,pageNumber, pageSize);
 		RestQueryResultModal<Gift> result = new RestQueryResultModal<Gift>(giftPqge.getTotalElements(), giftPqge.getContent());
 		return result;
 	}

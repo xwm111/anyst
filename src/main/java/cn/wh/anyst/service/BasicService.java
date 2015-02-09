@@ -4,9 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +24,7 @@ import cn.wh.anyst.entity.QueryHospitalResult;
 import cn.wh.anyst.entity.Tap;
 import cn.wh.anyst.repository.CustomerGroupDAO;
 import cn.wh.anyst.repository.DepartmentDAO;
+import cn.wh.anyst.repository.GiftDAO;
 import cn.wh.anyst.repository.GiftGroupDAO;
 import cn.wh.anyst.repository.HospitalDAO;
 import cn.wh.anyst.repository.TapDAO;
@@ -38,6 +45,8 @@ public class BasicService {
 	private DepartmentDAO departmentDao;
 	@Autowired
 	private HospitalDAO hospitalDao;
+	@Autowired
+	private GiftDAO giftDao;
 	
 	/******************************************
 	 * 客户分组相关接口 
@@ -192,13 +201,11 @@ public class BasicService {
 	 * 根据产品编号获取礼品分类
 	 */
 	public List<GiftGroup> findGiftGroupByProductCode(String code){
-		//TODO 根据产品CODE查找该产品下的所有礼品分类
-		List<GiftGroup> fakelist = new ArrayList<GiftGroup>();
-		GiftGroup gg= new GiftGroup();
-		gg.setId(1l);
-		gg.setName("fakegg1");;
-		fakelist.add(gg);
-		return fakelist;
+		
+		//先从Gift中查找GroupId
+		List<Long> groupIds = giftDao.findDistinctGiftGroupByProduct(code);
+		//通过分组ID查询分组信息
+		return giftGroupDao.findByIdIn(groupIds);
 	}
 	
 	/******************************************

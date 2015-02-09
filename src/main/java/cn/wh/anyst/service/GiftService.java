@@ -1,6 +1,8 @@
 package cn.wh.anyst.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -31,6 +33,10 @@ import cn.wh.anyst.repository.TapDAO;
 @Transactional
 public class GiftService {
 	
+	public static final int ONE_TO_FIVE = 0;
+	public static final int SIX_TO_TEN = 1;
+	public static final int ELEVEN_TO_FIFTEEN = 2;
+	
 	@Autowired
 	private GiftDAO giftDao;
 	
@@ -42,6 +48,22 @@ public class GiftService {
 	
 	@Autowired
 	private GiftGroupDAO giftGroupDao;
+	
+	private final Map<Integer, Map<Integer, Integer>> exchangeValueScope = new HashMap<Integer, Map<Integer, Integer>>();
+	
+	public GiftService() {
+		HashMap<Integer, Integer> oneToFiveMap = new HashMap<Integer, Integer>();
+		oneToFiveMap.put(new Integer(1), new Integer(5));
+		exchangeValueScope.put(new Integer(ONE_TO_FIVE), oneToFiveMap);
+		
+		HashMap<Integer, Integer> sixToTenMap = new HashMap<Integer, Integer>();
+		oneToFiveMap.put(new Integer(6), new Integer(10));
+		exchangeValueScope.put(new Integer(SIX_TO_TEN), sixToTenMap);
+		
+		HashMap<Integer, Integer> elevenToFifteenMap = new HashMap<Integer, Integer>();
+		oneToFiveMap.put(new Integer(11), new Integer(15));
+		exchangeValueScope.put(new Integer(ELEVEN_TO_FIFTEEN), elevenToFifteenMap);
+	}
 	
 	/*
 	 * 查询礼品服务
@@ -124,9 +146,12 @@ public class GiftService {
 				}
 			}
 		}
-		
 		return result;
-		
+	}
+	
+	public List<Gift> listGiftByProductAndGroupAndExchangeValueBetween(String product, Long groupId, int scopeType) {
+		Map<Integer, Integer> scope = exchangeValueScope.get(scopeType);
+		giftDao.findByProductAndGiftGroupAndExchangeValueBetween(product, groupId, scope., max)
 	}
 	
 	/*
