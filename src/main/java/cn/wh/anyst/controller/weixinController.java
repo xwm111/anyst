@@ -27,7 +27,6 @@ import cn.wh.anyst.entity.GiftGroup;
 import cn.wh.anyst.entity.Product;
 import cn.wh.anyst.service.BasicService;
 import cn.wh.anyst.service.ProductService;
-import cn.wh.anyst.util.WxUserInfoUpdateContentHandler;
 import cn.wh.anyst.util.WxUserInfoUpdateEventHandler;
 
 /*
@@ -76,7 +75,6 @@ public class weixinController {
 			.handler(contenthandler)
 			.end();
 			router.route(message);
-//			logger.debug("return xml is :"+backxml);
 			return echostr;
 		} else {
 			return "message is not from wx";

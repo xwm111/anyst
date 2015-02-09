@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.wh.anyst.entity.Customer;
-import cn.wh.anyst.entity.Supplier;
 import cn.wh.anyst.repository.CustomerDAO;
 
 /*
