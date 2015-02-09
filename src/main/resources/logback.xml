@@ -17,13 +17,15 @@
 	</appender>
 
 	<!-- project default level -->
-	<logger name="cn.wh.anyst" level="INFO" />
+	<logger name="cn.wh.anyst" level="DEBUG" />
 
 	<!--log4jdbc -->
 	<logger name="jdbc.sqltiming" level="INFO"/>
 
 	<root level="WARN">
 		<appender-ref ref="console" />
+		<!-- 
 		<appender-ref ref="rollingFile" />
+		 -->
 	</root>
 </configuration>

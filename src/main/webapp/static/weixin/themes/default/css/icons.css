@@ -1,0 +1,35 @@
+/* CSS Document */
+.icon{
+	font-family:'qdoneFonts';
+	display:inline-block;
+	width:24px;
+	height:24px;
+	line-height:24px;
+	font-size:24px;
+	text-align:left;
+}
+.icon-l{
+	position:relative;
+	display:inline-block;
+	vertical-align:middle;
+}
+.icon-l::before{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:32px;
+	height:32px;
+	font-family:'qdoneFonts';
+	text-align:left;
+}
+.icon-c::before{
+	position:absolute;
+	top:50%;
+	left:50%;
+	width:32px;
+	height:32px;
+	font-family:'qdoneFonts';
+}
+/*****************************************************************************************************************/
+.icon-Increase::before { content: '\00e7'; }
+.icon-Reduce::before { content: '\00e8'; }

@@ -1,0 +1,108 @@
+/* CSS Document */
+
+.inputGroup{
+	display:table;
+	width:100%;
+	font-size:16px;
+}
+.inputGroup>span{
+	display:table-cell;
+	white-space:nowrap;
+}
+.inputGroup>span.icon{
+	width:36px;
+}
+.inputGroup>span.titles{
+	text-align:left;
+	width:4.5em;
+}
+.inputGroup>span.inputs input[type=text]{
+	position:relative;
+	border:0px;
+	margin:0px;
+	padding:0px;
+	width:95%;
+	padding-right:5%;
+	font-size:16px;
+	height:1.875em;
+	background-color:transparent;
+	color:#666;
+	background-repeat:no-repeat;
+	background-position:right center;
+	background-size:contain;
+	text-align:right;
+}
+.inputGroup>span.selects select,.inputGroup>span.selects input[type=text]{
+	position:relative;
+	border:0px;
+	margin:0px;
+	padding:0px;
+	width:85%;
+	font-size:16px;
+	height:1.875em;
+	background-color:transparent;
+	color:#666;
+	padding-right:15%;
+	background-image:url(../images/icons/arrow_r.svg);
+	background-repeat:no-repeat;
+	background-position:right center;
+	background-size:contain;
+	text-align:right;
+}
+
+/**/
+.inputButton{
+	line-height:1.875em;
+	display:table;
+	box-shadow:0px 0px 3px rgba(0,0,0,.3);
+	border-radius:5px;
+	font-size:16px;
+}
+.inputButton a{
+	display:table-cell;
+	width:1%;
+	text-align:center;
+	padding:.675em;
+	border-right:1px solid #e1e1e1;
+	color:#000;
+	background-color:#fff;
+	text-decoration:none;
+}
+.inputButton a:first-child{
+	/*border-left:0px;*/
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+}
+.inputButton a:last-child{
+	border-right:0px;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+}
+
+.inputButton.gre a{
+	color:#FFF;
+	background-color:#090;
+}
+.inputButton.org a{
+	color:#FFF;
+	background-color:#F60;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
