@@ -78,9 +78,11 @@ public class GiftIncController {
 	}
 	
 	@RequestMapping("/inc_gift_list_edit_imgs")
-	public String giftListEditImgs(@RequestParam("productCode") String code,
-			@RequestParam("productImgUrls") String urls,
+	public String giftListEditImgs(@RequestParam("giftCode") String code,
+			@RequestParam("giftImgUrls") String urls,
 			Model model) {
+		String[] urlStrings = urls.split("|");
+		model.addAttribute("urlsBean", urlStrings);
 		return "inc/inc_gift_list_add_imgs";
 	}
 }

@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import cn.wh.anyst.controller.weixinController;
 import cn.wh.anyst.entity.Gift;
 import cn.wh.anyst.service.GiftService;
-import cn.wh.anyst.view.GiftView;
 
 /*
  * 礼物restful接口
@@ -137,20 +137,13 @@ public class GiftRest {
 	// 根据产品pcode,礼品分组giftgroup,贴花数量范围flowerrange 分页page查询礼品集合
 	//贴花数量范围说明 flowerrange 0表示1-5，1表示 6-10 ，2表示 11-15 目前暂用这3个值
 	@RequestMapping(value = "/mbquery", method = RequestMethod.GET)
-	public RestQueryResultModal<GiftView> mbliftquery(@RequestParam("pcode") String pcode, @RequestParam("giftgroup") String giftgroup,
+	public RestQueryResultModal<Gift> mbliftquery(@RequestParam("pcode") String pcode, @RequestParam("giftgroup") String giftgroup,
 			@RequestParam("flowerrange") String flowerrange,@RequestParam("page") int page) {
+		//TODO  根据产品pcode,礼品分组giftgroup,贴花数量范围flowerrange 分页page查询礼品集合
 		logger.debug("手机访问，查询礼品列表，查询参数 pcode:"+pcode+"  giftgroup:"+giftgroup+" flowerrange:"+flowerrange);
 		//用户测试，使用了全部的gift 没管分页
-//		Page<Gift> giftPqge = giftService.listGift(null,null,-1l,-1,5,page);
-		Page<Gift> giftPqge = giftService.findGifyByProductGroupFlowerrange(pcode,giftgroup,flowerrange,page);
+		Page<Gift> giftPqge = giftService.listGift(null,null,-1l,-1,5,page);
 		RestQueryResultModal<Gift> result = new RestQueryResultModal<Gift>(giftPqge.getTotalElements(), giftPqge.getContent());
-		//将后台数据转化为前台显示数据
-		RestQueryResultModal<GiftView> viewResult = this.transform(result);
-		return viewResult;
-	}
-
-	private RestQueryResultModal<GiftView> transform(RestQueryResultModal<Gift> result) {
-		// TODO 转换方法，将后台礼品数据转换成前台礼品view
-		return null;
+		return result;
 	}
 }

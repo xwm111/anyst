@@ -2,7 +2,7 @@
 //地址样取get传值，返回object
 var UrlRequest=getUrlRequest();
 //设置平台默认路径
-var root="http://localhost:8080/anyst/static/weixin/";
+var root="http://192.168.199.247:8080/anyst/static/weixin/";
 
 //设置日期、选择弹窗参数
 var defaultControls={

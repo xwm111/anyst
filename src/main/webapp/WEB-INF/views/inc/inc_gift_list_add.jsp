@@ -36,7 +36,7 @@
       <div title="礼品图片" href="${ctx}/inc/gift/inc_gift_list_add_imgs"></div>
         </c:when>
         <c:otherwise>
-      <div title="礼品图片" href="${ctx}/inc/gift/inc_gift_list_edit_imgs"></div>
+      <div title="礼品图片" href="${ctx}/inc/gift/inc_gift_list_edit_imgs?giftCode=${giftBean.code}&giftImgUrls=${giftBean.imgUrls}"></div>
         </c:otherwise>
       </c:choose>
     </div>

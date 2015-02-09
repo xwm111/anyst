@@ -81,10 +81,6 @@
 				<ref bean="wxconfig" />
 			</property>
 		</bean>
-		
-		<!-- 
-		<bean id="contenthandler" class="cn.wh.anyst.util.WxUserInfoUpdateContentHandler" />
-		 -->
 
 
 		<!-- 数据源配置, 使用Tomcat JDBC连接池 -->

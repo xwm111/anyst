@@ -54,7 +54,13 @@
 
 	<!-- 依赖项定义 -->
 	<dependencies>
-
+		<!-- 七牛API -->
+		<dependency>
+    		<groupId>com.qiniu</groupId>
+    		<artifactId>sdk</artifactId>
+    		<version>[6.1.7, 6.999]</version>
+		</dependency
+		>
 		<!-- 微信公众号开发sdk -->
 		<dependency>
 			<groupId>me.chanjar</groupId>

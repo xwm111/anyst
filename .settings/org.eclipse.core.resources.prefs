@@ -7,6 +7,7 @@ encoding//src/main/webapp/WEB-INF/views/inc/inc_depar_list_add_department_infos.
 encoding//src/main/webapp/WEB-INF/views/inc/inc_depar_list_add_hospital_infos.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/inc/inc_dist_list_add.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/inc/inc_gift_list.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/inc/inc_gift_list_add_imgs.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/inc/inc_gift_list_add_infos.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/inc/inc_group_list_add_infos.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/inc/inc_prod_list.jsp=UTF-8

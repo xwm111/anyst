@@ -24,8 +24,8 @@ function appendGridList(){
   var lists=$('#gridList').children('ul');
   $.ajax({
     type:'GET',
-	url:'${ctx}/api/v1/gift/mbquery?page='+page+'&pcode=${pcode}&flowerrange=${flowerrange}&giftgroup=${giftgroup}',
- //    url:'${ctx}/static/weixin/data/data_gift.json?page='+page,
+//    url:'${ctx}/api/v1/gift/mbquery?page='+page+'&pcode=${pcode}&flowerrange=${flowerrange}&giftgroup=${giftgroup}',
+    url:'${ctx}/static/weixin/data/data_gift.json?page='+page,
     dataType:"json",
     async:true,
     success: function(data){
@@ -44,17 +44,17 @@ function formatterData(d){
 		html+='<div class="listContGroup">'
 		html+='<div class="conts">'
 		html+='<div class="imgs">'
-		html+='<span class="img" style="background-image:url('+d.giftPicUrl+')"></span>'
-		html+='<span class="note"> <img src="${product.tapImgUrls}"> '+d.flowerQuantity+' 枚</span>'
+		html+='<span class="img" style="background-image:url('+d.lab_06+')"></span>'
+		html+='<span class="note"> <img src="${ctx}/static/weixin/themes/default/images/flower.png"> '+d.lab_02+' 枚</span>'
 		html+='</div>'
 		html+='<div class="titles">'
-		html+='<span class="title">'+d.giftName+'<span class="unit">￥'+Number(d.openPrice).toFixed(2)+'</span></span>'
-		html+='<span class="note">'+d.intro+'</span>'
+		html+='<span class="title">'+d.lab_01+'<span class="unit">￥'+Number(d.lab_03).toFixed(2)+'</span></span>'
+		html+='<span class="note">'+d.lab_04+'</span>'
 		html+='</div>'
 		html+='</div>'
 		html+='<div class="btns">'
-		html+='<a href="${ctx}/mbgift/'+d.giftId+'？flowerurl=${product.tapImgUrls}">详细</a>'
-		html+='<a href="${ctx}/mbbuygift?id='+d.giftId+'&number=1">兑换一个</a>'
+		html+='<a href="${ctx}/mbgift/'+d.lab_00+'">详细</a>'
+		html+='<a href="gift_list_buy.html?id'+d.lab_01+'">兑换一个</a>'
 		html+='</div>'
 		html+='</div>'
 	}
