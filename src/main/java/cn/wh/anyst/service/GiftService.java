@@ -23,6 +23,7 @@ import cn.wh.anyst.repository.GiftDAO;
 import cn.wh.anyst.repository.GiftGroupDAO;
 import cn.wh.anyst.repository.ProductDAO;
 import cn.wh.anyst.repository.TapDAO;
+import cn.wh.anyst.view.GiftView;
 
 /*
  * 礼物业务服务
@@ -169,5 +170,10 @@ public class GiftService {
 	 */
 	public void deleteGiftByCode(String code) {
 		giftDao.deleteByCode(code);
+	}
+
+	public GiftView findGiftById(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
