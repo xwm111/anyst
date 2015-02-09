@@ -40,12 +40,12 @@ $(function(){
 <form action="${ctx}/mbbuygift" method="post">
 <input type="hidden" name="id" value="${id }">;
 <div class="content-view paper">
-  <h4>德国巧克力 <span style="float:right;"><input name="number" type="text" min="1" class="qdone-numbers" value="1" style="width:60px; text-align:center;"></span></h4>
+  <h4>${gift.giftName} <span style="float:right;"><input name="number" type="text" min="1" class="qdone-numbers" value="1" style="width:60px; text-align:center;"></span></h4>
   <div class="nullLine" style="height:15px;"></div>
-  <p><span class="font-16-org">￥80.00</span> <span class="font-12-g-del">￥118.00</span> <span class="font-16-gre" style="float:right;"> <img src="${ctx}/static/weixin/themes/default/images/flower.png" width="20" height="20" style="vertical-align:middle; position:relative; top:-2px;"> 8 枚</span></p>
+  <p><span class="font-16-org">￥${gift.openPrice}</span> <span class="font-12-g-del">￥${gift.openPrice}</span> <span class="font-16-gre" style="float:right;"> <img src="${flowerurl }" width="20" height="20" style="vertical-align:middle; position:relative; top:-2px;"> 8 枚</span></p>
 </div>
 <div class="content-view paper">
-  <p class="font-14-g">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus ...</p>
+  <p class="font-14-g">${gift.intro}</p>
 </div>
 <div class="contents">
   <div class="inputButton">
