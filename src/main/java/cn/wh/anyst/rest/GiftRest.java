@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.wh.anyst.controller.weixinController;
+import cn.wh.anyst.controller.WeixinController;
 import cn.wh.anyst.entity.Gift;
 import cn.wh.anyst.service.GiftService;
 
