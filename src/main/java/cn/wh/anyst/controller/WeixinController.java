@@ -38,8 +38,8 @@ import cn.wh.anyst.view.GiftView;
  */
 @Controller
 @RequestMapping("/")
-public class weixinController {
-	private static Logger logger = LoggerFactory.getLogger(weixinController.class);
+public class WeixinController {
+	private static Logger logger = LoggerFactory.getLogger(WeixinController.class);
 
 	@Autowired
 	private WxMpServiceImpl wxService;
@@ -125,7 +125,8 @@ public class weixinController {
 		logger.debug("手机访问--查询礼品,礼品分类---" + giftgroup + "    贴花范围：" + flowerrange + "    产品编码:" + pcode);
 		model.addAttribute("giftgroup", giftgroup);
 		model.addAttribute("flowerrange", flowerrange);
-		model.addAttribute("pcode", pcode);
+		Product p = productService.findByCode(pcode);
+		model.addAttribute("product", p);
 		return "wx/gift_list";
 	}
 
@@ -137,11 +138,12 @@ public class weixinController {
 	 * @return
 	 */
 	@RequestMapping(value = "mbgift/{id}", method = RequestMethod.GET)
-	public String giftDetail(@PathVariable("id") String id, Model model) {
+	public String giftDetail(@PathVariable("id") String id, @RequestParam("flowerurl")String flowerurl,Model model) {
 		logger.debug("手机访问--查询礼品详情---礼品ID:" + id);
 		model.addAttribute("id", id);
 		GiftView view =  giftService.findGiftById(id);
 		model.addAttribute("gift",view);
+		model.addAttribute("flowerurl",flowerurl);
 		return "wx/gift_list_view";
 	}
 
@@ -153,10 +155,10 @@ public class weixinController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "mbbuygift", method = RequestMethod.POST)
+	@RequestMapping("mbbuygift")
 	public String buyGift(@RequestParam("id") String id, @RequestParam("number") int number, HttpSession session, Model model) {
 		logger.debug("手机访问--礼品购买---礼品ID:" + id + "   礼品数量:" + number);
-		exchangeHistoryService.orderGift(id);
+		exchangeHistoryService.orderGift(id,number);
 		model.addAttribute("pcode", session.getAttribute("pcode"));
 		return "wx/gift_list_buy";
 	}
