@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 import cn.wh.anyst.service.CustomerService;
 
-@Component
+@Component("contenthandler")
 public class WxUserInfoUpdateContentHandler implements WxMpMessageHandler {
 	private static Logger logger = LoggerFactory.getLogger(WxUserInfoUpdateContentHandler.class);
 

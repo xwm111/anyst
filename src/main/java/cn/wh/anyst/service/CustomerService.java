@@ -61,7 +61,7 @@ public class CustomerService {
 	 * @param content 用户发来的备注信息
 	 */
 	public void CreateOrUpdateCustomer(String openId, String content) {
-		// TODO Auto-generated method stub
+		// TODO 根据openId判断用户是否存在。不存在则创建新用户，存在则更新备注
 		
 	}
 }
