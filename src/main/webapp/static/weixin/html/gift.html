@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=2.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>礼品搜索</title>
+<link rel="stylesheet" type="text/css" href="../themes/default/css/style.css">
+<script src="../js/jquery.js"></script>
+<script src="../js/script.js"></script>
+<script>
+var bannerData=[
+  {
+    src:"../update/slider01.jpg"
+  }
+ ]
+
+$(function(){
+	setBanner({elmts:"#imgList",data:bannerData})
+
+	$('#selectClass').mobiscroll(defaultControls.selects);
+	$('#selectPayer').mobiscroll(defaultControls.selects);
+})
+</script>
+</head>
+
+<body>
+<div id="imgList"></div>
+<div class="contents">
+  <div class="gridList">
+    <ul>
+      <li>
+        <div class="inputGroup">
+          <!--<span class="icon icon-class"></span>-->
+          <span class="titles">礼品分类</span>
+          <span class="selects">
+          <select id="selectClass">
+            <option selected value="0">化妆品</option>
+            <option value="1">服装</option>
+            <option value="2">手机</option>
+          </select>
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="inputGroup">
+          <!--<span class="icon icon-class"></span>-->
+          <span class="titles">贴花数量</span>
+          <span class="selects">
+          <select id="selectPayer">
+            <option selected value="0">1~5</option>
+            <option value="1">6~10</option>
+            <option value="2">11~15</option>
+          </select>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="nullLine" style="height:10px;"></div>
+  <div class="inputButton org">
+  	<a href="gift_list.html">搜索</a>
+  	<!--<a>清空</a>-->
+  </div>
+  <div class="nullLine" style="height:10px;"></div>
+  <div class="inputButton gre">
+  	<a href="regist.html">我要注册</a>
+  	<!--<a>清空</a>-->
+  </div>
+</div>
+</body>
+</html>

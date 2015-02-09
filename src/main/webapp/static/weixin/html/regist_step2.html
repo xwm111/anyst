@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=2.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>用户注册</title>
+<link rel="stylesheet" type="text/css" href="../themes/default/css/style.css">
+<script src="../js/jquery.js"></script>
+<script src="../js/script.js"></script>
+<script>
+$(function(){
+	$('#selectAdds').mobiscroll(defaultControls.selectGroup);
+	$('#selectCompany').mobiscroll(defaultControls.selects);
+})
+</script>
+</head>
+
+<body>
+<div class="nullLine" style="height:20px;"></div>
+<div class="contents">
+  <h4>请输入您的基本信息</h4>
+</div>
+<div class="gridList E">
+  <ul>
+    <li>
+      <div class="inputGroup">
+        <!--<span class="icon icon-class"></span>-->
+        <span class="titles">工作地点</span>
+        <span class="selects">
+        <select id="selectAdds">
+          <optgroup label="北京">
+          <option selected value="0">北京市</option>
+          </optgroup>
+          <optgroup label="上海">
+          <option selected value="0">上海市</option>
+          </optgroup>
+          <optgroup label="湖北省">
+          <option selected value="0">武汉市</option>
+          <option value="1">黄石市</option>
+          <option value="2">荆州市</option>
+          </optgroup>
+        </select>
+        </span>
+      </div>
+    </li>
+    <li>
+      <div class="inputGroup">
+        <!--<span class="icon icon-class"></span>-->
+        <span class="titles">所在单位</span>
+        <span class="selects">
+        <select id="selectCompany">
+          <option selected value="0">武汉市第三人民医院</option>
+          <option value="1">武汉市中南医院</option>
+          <option value="1">武汉市中医院</option>
+          <option value="1">武汉市妇幼保健医院</option>
+        </select>
+        </span>
+      </div>
+    </li>
+    <li>
+      <div class="inputGroup">
+        <!--<span class="icon icon-class"></span>-->
+        <span class="titles">所属部门</span>
+        <span class="inputs">
+        <input name="" id="selectDepartment" type="text"  placeholder="请输入您当前所在的部门">
+        </span>
+      </div>
+    </li>
+    <li>
+      <div class="inputGroup">
+        <!--<span class="icon icon-class"></span>-->
+        <span class="titles">当前身份</span>
+        <span class="inputs">
+        <input name="" id="setIdentity" type="text" placeholder="请输入您的岗位身份">
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="nullLine" style="height:20px;"></div>
+<div class="contents">
+  <h4>请输入您的联系方式</h4>
+</div>
+<div class="gridList E">
+  <ul>
+    <li>
+      <div class="inputGroup">
+        <!--<span class="icon icon-class"></span>-->
+        <span class="titles">联系电话</span>
+        <span class="inputs">
+        <input name="" type="text" placeholder="请输入您的电话号码">
+        </span>
+      </div>
+    </li>
+    <li>
+      <div class="inputGroup">
+        <!--<span class="icon icon-class"></span>-->
+        <span class="titles">电子邮箱</span>
+        <span class="inputs">
+        <input name="" type="text" placeholder="请输入您常用的电子邮箱">
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="nullLine" style="height:20px;"></div>
+<div class="contents">
+  <div class="inputButton gre">
+    <a href="regist_stepLast.html">马上注册</a>
+    <!--<a>清空</a>-->
+  </div>
+</div>
+</body>
+</html>

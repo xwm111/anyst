@@ -1,0 +1,121 @@
+/* CSS Document */
+
+.gridList{
+	background-color:#FFF;
+	border-radius:5px;
+	
+	/*border:1px solid #dbdbdb;*/
+	box-shadow:0px 0px 3px rgba(0,0,0,.3)
+}
+.gridList ul{
+	padding-left:10px;
+}
+.gridList ul li{
+	display:block;
+	padding:.675em;
+	border-bottom:1px solid #e1e1e1;
+}
+.gridList ul li:first-child{
+	/*border-top:0px;*/
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+.gridList ul li:last-child{
+	border-bottom:0px;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+}
+/*----*/
+.gridList.A{}
+.gridList.A ul{
+	padding-left:0px;
+}
+/**/
+/*----*/
+.gridList.E{
+	border-radius:0px;
+}
+.gridList.E ul{}
+/**/
+.listContGroup{}
+.listContGroup .conts{
+	display:table;
+	padding-bottom:10px;
+}
+.listContGroup .conts .imgs{
+	display:table-cell;
+	width:80px;
+	vertical-align:top;
+}
+.listContGroup .conts .imgs .img{
+	display:block;
+	width:80px;
+	height:80px;
+	background-size:cover;
+}
+.listContGroup .conts .imgs .note{
+	display:block;
+	line-height:1.875em;
+	font-size:14px;
+	color:#090;
+}
+.listContGroup .conts .imgs .note img{
+	position:relative;
+	vertical-align:middle;
+	top:-2px;
+	width:16px;
+	height:16px;
+}
+.listContGroup .conts .titles{
+	display:table-cell;
+	vertical-align:top;
+	padding-left:10px
+}
+.listContGroup .conts .titles .title{
+	display:block;
+	line-height:1.875em;
+}
+.listContGroup .conts .titles .title .unit{
+	float:right;
+	color:#F30;
+}
+.listContGroup .conts .titles .note{
+	display:block;
+	font-size:12px;
+	line-height:1.625em;
+	color:#999;
+}
+.listContGroup .btns{
+	display:table;
+	padding-top:10px;
+	line-height:1.875em;
+	border-top:1px dashed #e1e1e1;
+}
+.listContGroup .btns a{
+	display:table-cell;
+	width:1%;
+	text-align:center;
+	border-right:1px solid #e1e1e1;
+	text-decoration:none;
+	color:#000;
+}
+.listContGroup .btns a:first-child{
+	/*border-right:0px;*/
+}
+.listContGroup .btns a:last-child{
+	border-right:0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
