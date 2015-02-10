@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.wh.anyst.controller.WeixinController;
 import cn.wh.anyst.entity.Gift;
 import cn.wh.anyst.service.GiftService;
+import cn.wh.anyst.view.GiftView;
 
 /*
  * 礼物restful接口
@@ -133,20 +133,19 @@ public class GiftRest {
 		return 0;
 	}
 
-	// 手机访问
-	// 根据产品pcode,礼品分组giftgroup,贴花数量范围flowerrange 分页page查询礼品集合
+	//手机访问
+	//根据产品pcode,礼品分组giftgroup,贴花数量范围flowerrange 分页page查询礼品集合
 	//贴花数量范围说明 flowerrange 0表示1-5，1表示 6-10 ，2表示 11-15 目前暂用这3个值
 	@RequestMapping(value = "/mbquery", method = RequestMethod.GET)
 	public RestQueryResultModal<Gift> mbliftquery(
-			@RequestParam("pcode") String pcode, 
-			@RequestParam("giftgroup") Long giftgroup,
-			@RequestParam("flowerrange") String flowerrange,
-			@RequestParam("page") int pageNumber,
+			@RequestParam("pcode") String pcode,										//产品编码 
+			@RequestParam("giftgroup") Long giftgroup,									//礼品分组
+			@RequestParam("flowerrange") int flowerrange,								//范围编码 （0 - 1到5， 1 - 6到10， 2 - 11到15）
+			@RequestParam(value = "page", defaultValue = "1") int pageNumber,
 			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize) {
-		//TODO  根据产品pcode,礼品分组giftgroup,贴花数量范围flowerrange 分页page查询礼品集合
 		logger.debug("手机访问，查询礼品列表，查询参数 pcode:"+pcode+"  giftgroup:"+giftgroup+" flowerrange:"+flowerrange);
 		//用户测试，使用了全部的gift 没管分页
-		Page<Gift> giftPqge = giftService.listGift(null,null,-1l,-1,5,pageNumber, pageSize);
+		Page<Gift> giftPqge = giftService.listGiftByProductAndGroupAndExchangeValueBetween(pcode, giftgroup, flowerrange, pageNumber, pageSize);
 		RestQueryResultModal<Gift> result = new RestQueryResultModal<Gift>(giftPqge.getTotalElements(), giftPqge.getContent());
 		return result;
 	}
