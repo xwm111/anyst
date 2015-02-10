@@ -152,7 +152,8 @@ public class GiftService {
 	
 	public List<Gift> listGiftByProductAndGroupAndExchangeValueBetween(String product, Long groupId, int scopeType) {
 		Map<Integer, Integer> scope = exchangeValueScope.get(scopeType);
-		giftDao.findByProductAndGiftGroupAndExchangeValueBetween(product, groupId, scope., max)
+		//giftDao.findByProductAndGiftGroupAndExchangeValueBetween(product, groupId, scope., max)
+		return null;
 	}
 	
 	/*

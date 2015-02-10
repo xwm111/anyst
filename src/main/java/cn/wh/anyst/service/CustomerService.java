@@ -64,4 +64,14 @@ public class CustomerService {
 		// TODO 根据openId判断用户是否存在。不存在则创建新用户，存在则更新备注
 		
 	}
+
+	/**
+	 * 根据openID查询客户是否能够访问页面,openId对应的客户status =1的则返回ture
+	 * @param openId
+	 * @return
+	 */
+	public boolean checkCustomerByOpenId(String openId) {
+		// TODO 根据openID查询客户是否能够访问页面,openId对应的客户status =1的则返回ture
+		return true;
+	}
 }

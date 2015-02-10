@@ -141,8 +141,8 @@ public class GiftRest {
 			@RequestParam("flowerrange") String flowerrange,@RequestParam("page") int page) {
 		logger.debug("手机访问，查询礼品列表，查询参数 pcode:"+pcode+"  giftgroup:"+giftgroup+" flowerrange:"+flowerrange);
 		//用户测试，使用了全部的gift 没管分页
-//		Page<Gift> giftPqge = giftService.listGift(null,null,-1l,-1,5,page);
-		Page<Gift> giftPqge = giftService.findGifyByProductGroupFlowerrange(pcode,giftgroup,flowerrange,page);
+		Page<Gift> giftPqge = giftService.listGift(null,null,-1l,-1,5,page);
+//		Page<Gift> giftPqge = giftService.findGifyByProductGroupFlowerrange(pcode,giftgroup,flowerrange,page);
 		RestQueryResultModal<Gift> result = new RestQueryResultModal<Gift>(giftPqge.getTotalElements(), giftPqge.getContent());
 		//将后台数据转化为前台显示数据
 		RestQueryResultModal<GiftView> viewResult = this.transform(result);
