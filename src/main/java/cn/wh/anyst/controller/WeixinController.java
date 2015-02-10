@@ -6,10 +6,13 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import me.chanjar.weixin.common.api.WxConsts;
+import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpMessageHandler;
 import me.chanjar.weixin.mp.api.WxMpMessageRouter;
 import me.chanjar.weixin.mp.api.WxMpServiceImpl;
 import me.chanjar.weixin.mp.bean.WxMpXmlMessage;
+import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
+import me.chanjar.weixin.mp.bean.result.WxMpUser;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.wh.anyst.entity.GiftGroup;
 import cn.wh.anyst.entity.Product;
 import cn.wh.anyst.service.BasicService;
+import cn.wh.anyst.service.CustomerService;
 import cn.wh.anyst.service.ExchangeHistoryService;
 import cn.wh.anyst.service.GiftService;
 import cn.wh.anyst.service.ProductService;
@@ -58,6 +62,9 @@ public class WeixinController {
 	
 	@Autowired
 	private ExchangeHistoryService exchangeHistoryService;
+	
+	@Autowired
+	private CustomerService customerService;
 	
 	@RequestMapping("anystwx")
 	@ResponseBody
@@ -108,6 +115,30 @@ public class WeixinController {
 		model.addAttribute("pcode", code);
 		logger.debug("手机访问礼品页查询页,礼品名称---" + p.getName());
 		return "wx/gift";
+	}
+	
+	
+	@RequestMapping("mbproduct}")
+	public String initGiftFromRedirect(@RequestParam("state") String state,@RequestParam("code") String code, Model model, HttpSession session) {
+		
+		logger.debug("微信授权回调---state=" + state+"   code=" +code);
+		WxMpOAuth2AccessToken wxMpOAuth2AccessToken = null;
+		WxMpUser wxMpUser = null;
+		try {
+			 wxMpOAuth2AccessToken = wxService.oauth2getAccessToken(code);
+			 wxMpUser = wxService.oauth2getUserInfo(wxMpOAuth2AccessToken, null);
+			 if(wxMpUser!=null){
+				 if(customerService.checkCustomerByOpenId(wxMpUser.getOpenId())){
+					 return  this.initGift(state, model, session);
+				 }else{
+					 return "wx/noauth";
+				 }
+			 }
+		} catch (WxErrorException e) {
+			logger.debug("微信web授权出错:"+e.getMessage());
+		}
+		return "error";
+		
 	}
 
 	/**

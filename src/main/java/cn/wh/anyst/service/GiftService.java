@@ -142,9 +142,16 @@ public class GiftService {
 		return result;
 	}
 	
+<<<<<<< HEAD
 	public Page<Gift> listGiftByProductAndGroupAndExchangeValueBetween(String product, Long groupId, int scopeType, int pageNumber, int pageSize) {
 		ScopePair scope = exchangeValueScope.get(scopeType);
 		return giftDao.findByProductAndGiftGroupAndExchangeValueBetween(product, groupId, scope.first, scope.second, new PageRequest(pageNumber - 1, pageSize));
+=======
+	public List<Gift> listGiftByProductAndGroupAndExchangeValueBetween(String product, Long groupId, int scopeType) {
+		Map<Integer, Integer> scope = exchangeValueScope.get(scopeType);
+		//giftDao.findByProductAndGiftGroupAndExchangeValueBetween(product, groupId, scope., max)
+		return null;
+>>>>>>> branch 'master' of https://github.com/xwm111/anyst
 	}
 	
 	/*
