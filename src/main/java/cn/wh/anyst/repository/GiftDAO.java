@@ -2,6 +2,8 @@ package cn.wh.anyst.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,7 +22,7 @@ public interface GiftDAO extends PagingAndSortingRepository<Gift, Long>, JpaSpec
 	@Query("select distinct g.giftGroup from Gift g where g.product = ?1")
 	public List<Long> findDistinctGiftGroupByProduct(String productCode);
 	
-	public List<Gift> findByProductAndGiftGroupAndExchangeValueBetween(String product, Long groupId, int min, int max);
+	public Page<Gift> findByProductAndGiftGroupAndExchangeValueBetween(String product, Long groupId, int min, int max, Pageable pageable);
 	
 	/*
 	 * 通过礼品编码删除礼品

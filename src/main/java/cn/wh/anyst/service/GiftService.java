@@ -50,20 +50,12 @@ public class GiftService {
 	@Autowired
 	private GiftGroupDAO giftGroupDao;
 	
-	private final Map<Integer, Map<Integer, Integer>> exchangeValueScope = new HashMap<Integer, Map<Integer, Integer>>();
+	private final Map<Integer, ScopePair> exchangeValueScope = new HashMap<Integer, ScopePair>();
 	
 	public GiftService() {
-		HashMap<Integer, Integer> oneToFiveMap = new HashMap<Integer, Integer>();
-		oneToFiveMap.put(new Integer(1), new Integer(5));
-		exchangeValueScope.put(new Integer(ONE_TO_FIVE), oneToFiveMap);
-		
-		HashMap<Integer, Integer> sixToTenMap = new HashMap<Integer, Integer>();
-		oneToFiveMap.put(new Integer(6), new Integer(10));
-		exchangeValueScope.put(new Integer(SIX_TO_TEN), sixToTenMap);
-		
-		HashMap<Integer, Integer> elevenToFifteenMap = new HashMap<Integer, Integer>();
-		oneToFiveMap.put(new Integer(11), new Integer(15));
-		exchangeValueScope.put(new Integer(ELEVEN_TO_FIFTEEN), elevenToFifteenMap);
+		exchangeValueScope.put(new Integer(ONE_TO_FIVE), new ScopePair(1, 5));
+		exchangeValueScope.put(new Integer(SIX_TO_TEN), new ScopePair(6, 10));
+		exchangeValueScope.put(new Integer(ELEVEN_TO_FIFTEEN), new ScopePair(11, 15));
 	}
 	
 	/*
@@ -150,9 +142,9 @@ public class GiftService {
 		return result;
 	}
 	
-	public List<Gift> listGiftByProductAndGroupAndExchangeValueBetween(String product, Long groupId, int scopeType) {
-		Map<Integer, Integer> scope = exchangeValueScope.get(scopeType);
-		giftDao.findByProductAndGiftGroupAndExchangeValueBetween(product, groupId, scope., max)
+	public Page<Gift> listGiftByProductAndGroupAndExchangeValueBetween(String product, Long groupId, int scopeType, int pageNumber, int pageSize) {
+		ScopePair scope = exchangeValueScope.get(scopeType);
+		return giftDao.findByProductAndGiftGroupAndExchangeValueBetween(product, groupId, scope.first, scope.second, new PageRequest(pageNumber - 1, pageSize));
 	}
 	
 	/*
@@ -200,5 +192,16 @@ public class GiftService {
 	public GiftView findGiftById(String id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	private static class ScopePair {
+		
+		private int first;
+		private int second;
+		
+		private ScopePair(int first, int second) {
+			this.first = first;
+			this.second = second;
+		}
 	}
 }
